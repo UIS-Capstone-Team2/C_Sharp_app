@@ -1,0 +1,16 @@
+c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\bin\Debug\SoftTopics.exe.config
+c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\bin\Debug\SoftTopics.exe
+c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\bin\Debug\SoftTopics.pdb
+c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\obj\Debug\SoftTopics.csprojResolveAssemblyReference.cache
+c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\obj\Debug\SoftTopics.formLogin.resources
+c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\obj\Debug\SoftTopics.Properties.Resources.resources
+c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\obj\Debug\SoftTopics.csproj.GenerateResource.Cache
+c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\obj\Debug\SoftTopics.exe
+c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\obj\Debug\SoftTopics.pdb
+c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\obj\Debug\SoftTopics.HomeScreen.resources
+c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\obj\Debug\SoftTopics.RentForm.resources
+c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\obj\Debug\SoftTopics.EmployeeManagement.resources
+c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\obj\Debug\SoftTopics.CustomerManagement.resources
+c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\obj\Debug\SoftTopics.Returns.resources
+c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\obj\Debug\SoftTopics.MovieManagement.resources
+c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\obj\Debug\SoftTopics.Reports.resources
