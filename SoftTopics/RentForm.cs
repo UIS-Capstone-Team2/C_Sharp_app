@@ -311,6 +311,12 @@ namespace SoftTopics
 
         private void btnAddMovie_Click(object sender, EventArgs e)
         {
+            if (alreadyCheckedOut(txtDVDID.Text))
+            {
+                MessageBox.Show("This movie has already been rented, please return before re-renting the movie");
+                lblMovieTitle.Text = "";
+                txtRentalDays.Value = 0;
+            }
             if (txtRentalDays.Value > 0 && lblMovieTitle.Text != "")
             {
                 lvOverview.View = View.Details;
@@ -320,10 +326,30 @@ namespace SoftTopics
                 totalPrice += (int)(txtRentalDays.Value) * 3;
                 lblTotalPrice.Text = totalPrice.ToString();
                 lblMovieTitle.Text = "";
+                txtRentalDays.Value = 0;
                 txtRentalDays.ResetText();
                 txtDVDID.ResetText();
             }
 
+        }
+
+        private Boolean alreadyCheckedOut(string upc)
+        {
+            string checkedOutFile = "..\\Files\\CheckedOut.txt";
+            using (StreamReader sr = new StreamReader(checkedOutFile))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] lineInfo = line.Split(',');
+                    string barcode = lineInfo[1];
+                    if (barcode.Equals(upc))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         private void submitMovies(string filePath)
