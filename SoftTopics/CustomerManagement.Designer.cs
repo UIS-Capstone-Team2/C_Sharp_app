@@ -35,18 +35,20 @@
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lvCustomers = new System.Windows.Forms.ListView();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.FirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PhoneNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtCustomerCard = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(281, 32);
+            this.label1.Location = new System.Drawing.Point(350, 62);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 0;
@@ -54,7 +56,7 @@
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(347, 29);
+            this.txtFirstName.Location = new System.Drawing.Point(416, 59);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(100, 20);
             this.txtFirstName.TabIndex = 1;
@@ -63,7 +65,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(281, 61);
+            this.label2.Location = new System.Drawing.Point(350, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 2;
@@ -71,7 +73,7 @@
             // 
             // txtLastName
             // 
-            this.txtLastName.Location = new System.Drawing.Point(347, 58);
+            this.txtLastName.Location = new System.Drawing.Point(416, 88);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(100, 20);
             this.txtLastName.TabIndex = 3;
@@ -79,7 +81,7 @@
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(347, 84);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(416, 114);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(100, 20);
             this.txtPhoneNumber.TabIndex = 5;
@@ -88,7 +90,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(261, 87);
+            this.label3.Location = new System.Drawing.Point(330, 117);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 13);
             this.label3.TabIndex = 4;
@@ -102,29 +104,9 @@
             this.PhoneNumber});
             this.lvCustomers.Location = new System.Drawing.Point(12, 12);
             this.lvCustomers.Name = "lvCustomers";
-            this.lvCustomers.Size = new System.Drawing.Size(206, 105);
+            this.lvCustomers.Size = new System.Drawing.Size(312, 146);
             this.lvCustomers.TabIndex = 6;
             this.lvCustomers.UseCompatibleStateImageBehavior = false;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(267, 134);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 7;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(372, 134);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 8;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // FirstName
             // 
@@ -138,9 +120,29 @@
             // 
             this.PhoneNumber.Text = "Phone Number";
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(336, 164);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 7;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(441, 164);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 8;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(12, 134);
+            this.btnEdit.Location = new System.Drawing.Point(12, 164);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 9;
@@ -148,11 +150,30 @@
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(333, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Customer Card: ";
+            // 
+            // txtCustomerCard
+            // 
+            this.txtCustomerCard.Location = new System.Drawing.Point(416, 12);
+            this.txtCustomerCard.MaxLength = 15;
+            this.txtCustomerCard.Name = "txtCustomerCard";
+            this.txtCustomerCard.Size = new System.Drawing.Size(100, 20);
+            this.txtCustomerCard.TabIndex = 11;
+            // 
             // CustomerManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 169);
+            this.ClientSize = new System.Drawing.Size(528, 199);
+            this.Controls.Add(this.txtCustomerCard);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnSearch);
@@ -185,5 +206,7 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtCustomerCard;
     }
 }

@@ -14,7 +14,7 @@ namespace SoftTopics
 {
     public partial class HomeScreen : Form
     {
-       
+
         string name;
         private SqlConnection myConn;
         private SqlCommand myCmd;
@@ -36,7 +36,7 @@ namespace SoftTopics
         {
 
             getName(name);
-            
+
             lblName.Text = name;
             updateOverdue();
         }
@@ -59,7 +59,7 @@ namespace SoftTopics
             using (StreamReader sr = new StreamReader(checkedOutFile))
             {
                 string line;
-                
+
 
                 while ((line = sr.ReadLine()) != null)
                 {
@@ -78,7 +78,7 @@ namespace SoftTopics
                     int yesterday = ts.Days;
                     if (yesterday == 1)
                     {
-                        
+
                         using (StreamWriter swTemp = new StreamWriter(tempFile))
                         {
                             using (StreamReader srOverdue = new StreamReader(overdueFile))
@@ -92,7 +92,7 @@ namespace SoftTopics
                                         match = true;
                                         break;
                                     }
-                                    
+
                                 }
 
                                 if (!match)
@@ -121,15 +121,15 @@ namespace SoftTopics
 
         private void getName(string ID)
         {
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=!N14Jelrjvjvvcicl; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=S0ftT0pix!; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
             myConn.Open();
             myCmd = new SqlCommand("SELECT FName, Manager FROM UserTable WHERE IDNumber = @Uname", myConn);
             myCmd.Parameters.AddWithValue("@Uname", ID);
 
-            
+
             myReader = myCmd.ExecuteReader();
             myReader.Read();
-            string Fname = (string) myReader.GetValue(myReader.GetOrdinal("FName"));
+            string Fname = (string)myReader.GetValue(myReader.GetOrdinal("FName"));
             name = Fname;
             string Manager = (string)myReader.GetValue(myReader.GetOrdinal("Manager"));
             if (Manager.Equals("N"))

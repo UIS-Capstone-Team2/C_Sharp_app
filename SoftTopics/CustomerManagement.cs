@@ -30,7 +30,7 @@ namespace SoftTopics
             FName = txtFirstName.Text;
             LName = txtLastName.Text;
             PhoneNumber = txtPhoneNumber.Text;
-            findCust(FName,LName,PhoneNumber);
+            findCust(FName, LName, PhoneNumber);
             if (lvCustomers.Items.Count != 0)
             {
                 btnEdit.Enabled = true;
@@ -84,13 +84,13 @@ namespace SoftTopics
         {
             if (txtFirstName.Text != "" && txtLastName.Text != "" && txtPhoneNumber.Text != "")
             {
-                
+
                 btnUpdate.Enabled = true;
             }
             else
             {
                 btnUpdate.Enabled = false;
-                
+
             }
 
             if (txtFirstName.Text != "" || txtLastName.Text != "" || txtPhoneNumber.Text != "")
@@ -126,20 +126,29 @@ namespace SoftTopics
             FName = txtFirstName.Text;
             LName = txtLastName.Text;
             PhoneNumber = txtPhoneNumber.Text;
-            Boolean findCustomer = exactMatch(FName,LName,PhoneNumber);
+            Boolean findCustomer = exactMatch(FName, LName, PhoneNumber);
             if (findCustomer)
             {
                 MessageBox.Show("Customer already exists", "Update Customer");
             }
             else
             {
-                addCustomer(FName, LName, PhoneNumber);
+                if (txtCustomerCard.Text.Length != 12)
+                {
+                    MessageBox.Show("Please enter a valid customer card number");
+                }
+                else
+                {
+                    addCustomer(FName, LName, PhoneNumber);
+                }
+
             }
 
         }
 
         private void addCustomer(string FName, string LName, string PhoneNumber)
         {
+            string customerCard = txtCustomerCard.Text;
             myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=XXXXX; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
             myConn.Open();
             myCmd = new SqlCommand(@"INSERT INTO Customers (FName, LName, PhoneNumber)
@@ -147,10 +156,11 @@ namespace SoftTopics
             myCmd.Parameters.AddWithValue("@FName", FName);
             myCmd.Parameters.AddWithValue("@LName", LName);
             myCmd.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
+            myCmd.Parameters.AddWithValue("@CustomerCard", customerCard);
             myCmd.ExecuteNonQuery();
             myConn.Close();
             MessageBox.Show("Customer Updated", "Update Customer");
- 
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -161,7 +171,7 @@ namespace SoftTopics
             string FName = selected.SubItems[0].Text;
             string LName = selected.SubItems[1].Text;
             string PhoneNumber = selected.SubItems[2].Text;
-            
+
             txtFirstName.Text = FName;
             txtLastName.Text = LName;
             txtPhoneNumber.Text = PhoneNumber;
@@ -173,7 +183,7 @@ namespace SoftTopics
 
         private void deleteCustomer(string FName, string LName, string PNumber)
         {
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=xxxxxx; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=S0ftT0pix!; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
             myConn.Open();
             myCmd = new SqlCommand(@"DELETE FROM Customers Where 
                 FName = @FName
@@ -184,6 +194,11 @@ namespace SoftTopics
             myCmd.Parameters.AddWithValue("@PNumber", PNumber);
             myCmd.ExecuteNonQuery();
             myConn.Close();
+        }
+
+        private void txtCustomerCard_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

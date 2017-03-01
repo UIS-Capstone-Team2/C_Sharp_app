@@ -31,7 +31,7 @@ namespace SoftTopics
         {
             string UName = txtUsername.Text;
             string PWord = txtPassword.Text;
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=XXXXXX; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=S0ftT0pix!; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
             myConn.Open();
             myCmd = new SqlCommand("SELECT IDNumber, PassPhrase FROM UserTable WHERE IDNumber = @Uname AND PassPhrase = @Pass", myConn);
             myCmd.Parameters.AddWithValue("@Uname", UName);

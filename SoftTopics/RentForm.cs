@@ -40,16 +40,20 @@ namespace SoftTopics
 
         private void findCust(string FName, string LName, string PNumber)
         {
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=XXXXX; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            string customerCard = txtCustomerCard.Text;
+
+            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=S0ftT0pix!; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
             myConn.Open();
-            myCmd = new SqlCommand(@"SELECT FName, LName, PhoneNumber FROM Customers WHERE 
+            myCmd = new SqlCommand(@"SELECT FName, LName, PhoneNumber, CustomerCard FROM Customers WHERE 
             (FName = @Fname AND LName = @Lname)
             OR (FName = @Fname AND PhoneNumber = @PNumber)
-            OR (LName = @Lname AND PhoneNumber = @PNumber)", myConn);
+            OR (LName = @Lname AND PhoneNumber = @PNumber)
+            OR (CustomerCard = @CustomerCard)", myConn);
             myCmd.Parameters.AddWithValue("@Fname", FName);
             myCmd.Parameters.AddWithValue("@Lname", LName);
             myCmd.Parameters.AddWithValue("@PNumber", PNumber);
-            
+            myCmd.Parameters.AddWithValue("@CustomerCard", customerCard);
+
 
 
             myReader = myCmd.ExecuteReader();
@@ -65,13 +69,13 @@ namespace SoftTopics
 
                 lvSearchResults.View = View.Details;
                 lvSearchResults.FullRowSelect = true;
-                string[] result = {FirstName, LastName, PhoneNumber};
+                string[] result = { FirstName, LastName, PhoneNumber };
                 lvSearchResults.Items.Add(new ListViewItem(result));
-                
+
 
             }
-            
- 
+
+
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -90,7 +94,7 @@ namespace SoftTopics
             if (File.Exists(fileName))
             {
                 checkOverdue(fileName);
-                checkLate(CustomerName,CustomerLastName,CustomerPhone);
+                checkLate(CustomerName, CustomerLastName, CustomerPhone);
             }
             else
             {
@@ -115,7 +119,7 @@ namespace SoftTopics
             using (StreamReader sr = new StreamReader(lateFile))
             {
                 string line;
-                while ((line = sr.ReadLine())!=null)
+                while ((line = sr.ReadLine()) != null)
                 {
                     string[] lineInfo = line.Split(',');
                     string FName = lineInfo[1];
@@ -179,7 +183,7 @@ namespace SoftTopics
         {
             string line;
             Boolean update = false;
-            
+
             StreamReader filePath = new StreamReader(file);
             int overdueDays = 0;
             int overdueMovies = 0;
@@ -215,16 +219,16 @@ namespace SoftTopics
 
                 System.TimeSpan late = today.Subtract(checkedOut);
                 int lateDays = late.Days;
-                overdueDays+=lateDays;
+                overdueDays += lateDays;
                 overdueMovies++;
-  
+
             }
             filePath.Close();
 
             if (update)
             {
                 File.Delete(file);
-                File.Move("..\\Files\\temp.txt",file);
+                File.Move("..\\Files\\temp.txt", file);
                 update = false;
             }
             if (overdueMovies > 0)
@@ -250,8 +254,8 @@ namespace SoftTopics
 
             filePath.Close();
             tempFile.Close();
-           
-            
+
+
         }
 
         private Boolean checkReturn(string upc)
@@ -319,7 +323,7 @@ namespace SoftTopics
                 txtRentalDays.ResetText();
                 txtDVDID.ResetText();
             }
-            
+
         }
 
         private void submitMovies(string filePath)
@@ -363,7 +367,7 @@ namespace SoftTopics
             totalPrice = 0;
             lblTotalPrice.Text = "0.00";
 
-            
+
         }
 
         private void btnRemoveMovie_Click(object sender, EventArgs e)
@@ -381,9 +385,9 @@ namespace SoftTopics
                 lblTotalPrice.Text = totalPrice.ToString();
                 lvOverview.SelectedItems[0].Remove();
             }
-            
 
-            
+
+
         }
 
         private void btnSubmitPayment_Click(object sender, EventArgs e)
@@ -400,6 +404,14 @@ namespace SoftTopics
             }
         }
 
-        
+        private void txtCustomerCard_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCustomerCard.Text.Length == 13)
+            {
+                findCust("Null", "Null", "Null");
+            }
+        }
+
+
     }
 }

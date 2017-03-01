@@ -57,11 +57,13 @@
             this.PhoneNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnSelect = new System.Windows.Forms.Button();
             this.lvOverview = new System.Windows.Forms.ListView();
-            this.label6 = new System.Windows.Forms.Label();
             this.MovieTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Days = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnRemoveMovie = new System.Windows.Forms.Button();
             this.UPC = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnRemoveMovie = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtCustomerCard = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtRentalDays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPaidAmount)).BeginInit();
             this.SuspendLayout();
@@ -317,15 +319,6 @@
             this.lvOverview.TabIndex = 26;
             this.lvOverview.UseCompatibleStateImageBehavior = false;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(423, 200);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 13);
-            this.label6.TabIndex = 27;
-            this.label6.Text = "Order Overview:";
-            // 
             // MovieTitle
             // 
             this.MovieTitle.Text = "Title";
@@ -334,6 +327,19 @@
             // Days
             // 
             this.Days.Text = "Days";
+            // 
+            // UPC
+            // 
+            this.UPC.Text = "UPC";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(423, 200);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(84, 13);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "Order Overview:";
             // 
             // btnRemoveMovie
             // 
@@ -345,15 +351,31 @@
             this.btnRemoveMovie.UseVisualStyleBackColor = true;
             this.btnRemoveMovie.Click += new System.EventHandler(this.btnRemoveMovie_Click);
             // 
-            // UPC
+            // label7
             // 
-            this.UPC.Text = "UPC";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(-2, 275);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 13);
+            this.label7.TabIndex = 32;
+            this.label7.Text = "Customer Card: ";
+            // 
+            // txtCustomerCard
+            // 
+            this.txtCustomerCard.Location = new System.Drawing.Point(86, 272);
+            this.txtCustomerCard.MaxLength = 15;
+            this.txtCustomerCard.Name = "txtCustomerCard";
+            this.txtCustomerCard.Size = new System.Drawing.Size(100, 20);
+            this.txtCustomerCard.TabIndex = 31;
+            this.txtCustomerCard.TextChanged += new System.EventHandler(this.txtCustomerCard_TextChanged);
             // 
             // RentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(780, 529);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtCustomerCard);
             this.Controls.Add(this.btnRemoveMovie);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lvOverview);
@@ -427,5 +449,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnRemoveMovie;
         private System.Windows.Forms.ColumnHeader UPC;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtCustomerCard;
     }
 }
