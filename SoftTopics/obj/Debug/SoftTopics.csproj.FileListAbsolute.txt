@@ -30,3 +30,12 @@ C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics
 C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.Reports.resources
 C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.Returns.resources
 C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.csproj.GenerateResource.Cache
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\MigraDoc.DocumentObjectModel.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\MigraDoc.Rendering.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\MigraDoc.RtfRendering.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\PdfSharp.Charting.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\PdfSharp.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\de\MigraDoc.DocumentObjectModel.resources.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\de\MigraDoc.Rendering.resources.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\de\MigraDoc.RtfRendering.resources.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\de\PdfSharp.resources.dll
