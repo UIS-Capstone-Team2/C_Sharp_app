@@ -27,7 +27,8 @@ namespace SoftTopics
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RentForm rentForm = new RentForm();
+            RentForm rentForm = new RentForm(name);
+
             rentForm.Show();
 
         }
@@ -140,32 +141,42 @@ namespace SoftTopics
 
         private void btnManagement_Click(object sender, EventArgs e)
         {
-            EmployeeManagement EMForm = new EmployeeManagement();
+            EmployeeManagement EMForm = new EmployeeManagement(name);
             EMForm.Show();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            CustomerManagement CMForm = new CustomerManagement();
+            CustomerManagement CMForm = new CustomerManagement(name);
             CMForm.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MovieManagement movieMan = new MovieManagement();
+            MovieManagement movieMan = new MovieManagement(name);
             movieMan.Show();
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            Returns rtn = new Returns();
+            Returns rtn = new Returns(name);
             rtn.Show();
         }
 
         private void btnReports_Click(object sender, EventArgs e)
         {
-            Reports reports = new Reports();
+            Reports reports = new Reports(name);
             reports.Show();
+        }
+
+        private void lblLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void lblLogout_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
         }
 
     }

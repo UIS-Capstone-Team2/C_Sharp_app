@@ -17,10 +17,12 @@ namespace SoftTopics
     {
         Font myFont;
         StreamReader fileToPrint;
-        public MovieManagement()
+        string name;
+        public MovieManagement(string name)
         {
-
             InitializeComponent();
+            this.name = name;
+            lblName.Text = name;
         }
 
         private void MovieManagement_Load(object sender, EventArgs e)
@@ -145,6 +147,46 @@ namespace SoftTopics
             {
                 lblBarcode.Text = txtBarcode.Text;
             }
+        }
+
+        private void btnManagement_Click(object sender, EventArgs e)
+        {
+            EmployeeManagement em = new EmployeeManagement(name);
+            em.Show();
+            this.Close();
+        }
+
+        private void btnCustomerMan_Click(object sender, EventArgs e)
+        {
+            CustomerManagement cm = new CustomerManagement(name);
+            cm.Show();
+            this.Close();
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            Reports reports = new Reports(name);
+            reports.Show();
+            this.Close();
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            Returns returns = new Returns(name);
+            returns.Show();
+            this.Close();
+        }
+
+        private void btnRent_Click(object sender, EventArgs e)
+        {
+            RentForm rentForm = new RentForm(name);
+            rentForm.Show();
+            this.Close();
+        }
+
+        private void lblLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

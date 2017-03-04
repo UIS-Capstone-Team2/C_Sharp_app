@@ -13,9 +13,12 @@ namespace SoftTopics
 {
     public partial class Reports : Form
     {
-        public Reports()
+        string name;
+        public Reports(string name)
         {
             InitializeComponent();
+            this.name = name;
+            lblName.Text = name;
         }
 
         private void btnRunReport_Click(object sender, EventArgs e)
@@ -72,6 +75,46 @@ namespace SoftTopics
         private void lateReport()
         {
  
+        }
+
+        private void btnRent_Click(object sender, EventArgs e)
+        {
+            RentForm rent = new RentForm(name);
+            rent.Show();
+            this.Close();
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            Returns returnForm = new Returns(name);
+            returnForm.Show();
+            this.Close();
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCustomerMan_Click(object sender, EventArgs e)
+        {
+            CustomerManagement cm = new CustomerManagement(name);
+            cm.Show();
+            this.Close();
+        }
+
+        private void btnManagement_Click(object sender, EventArgs e)
+        {
+            EmployeeManagement em = new EmployeeManagement(name);
+            em.Show();
+            this.Close();
+        }
+
+        private void btnMovieMan_Click(object sender, EventArgs e)
+        {
+            MovieManagement mm = new MovieManagement(name);
+            mm.Show();
+            this.Close();
         }
     }
 }
