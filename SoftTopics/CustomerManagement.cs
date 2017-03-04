@@ -13,13 +13,15 @@ namespace SoftTopics
 {
     public partial class CustomerManagement : Form
     {
-
+        string name;
         private SqlConnection myConn;
         private SqlCommand myCmd;
         private SqlDataReader myReader;
-        public CustomerManagement()
+        public CustomerManagement(string name)
         {
             InitializeComponent();
+            this.name = name;
+            lblName.Text = name;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -199,6 +201,46 @@ namespace SoftTopics
         private void txtCustomerCard_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void CustomerManagement_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRent_Click(object sender, EventArgs e)
+        {
+            RentForm rent = new RentForm(name);
+            rent.Show();
+            this.Close();
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            Returns returnForm = new Returns(name);
+            returnForm.Show();
+            this.Close();
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            Reports reports = new Reports(name);
+            reports.Show();
+            this.Close();
+        }
+
+        private void btnManagement_Click(object sender, EventArgs e)
+        {
+            EmployeeManagement em = new EmployeeManagement(name);
+            em.Show();
+            this.Close();
+        }
+
+        private void btnMovieMan_Click(object sender, EventArgs e)
+        {
+            MovieManagement mm = new MovieManagement(name);
+            mm.Show();
+            this.Close();
         }
     }
 }

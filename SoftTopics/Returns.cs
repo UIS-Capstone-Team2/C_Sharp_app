@@ -13,9 +13,12 @@ namespace SoftTopics
 {
     public partial class Returns : Form
     {
-        public Returns()
+        string name;
+        public Returns(string name)
         {
             InitializeComponent();
+            this.name = name;
+            lblName.Text = name;
         }
 
         private void Returns_Load(object sender, EventArgs e)
@@ -151,6 +154,53 @@ namespace SoftTopics
 
             File.Delete(realFile);
             File.Move(tempFile, realFile);
+        }
+
+        private void btnRent_Click(object sender, EventArgs e)
+        {
+            RentForm rent = new RentForm(name);
+            rent.Show();
+            this.Close();
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            Returns returnForm = new Returns(name);
+            returnForm.Show();
+            this.Close();
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            Reports reports = new Reports(name);
+            reports.Show();
+            this.Close();
+        }
+
+        private void btnCustomerMan_Click(object sender, EventArgs e)
+        {
+            CustomerManagement cm = new CustomerManagement(name);
+            cm.Show();
+            this.Close();
+        }
+
+        private void btnManagement_Click(object sender, EventArgs e)
+        {
+            EmployeeManagement em = new EmployeeManagement(name);
+            em.Show();
+            this.Close();
+        }
+
+        private void lblLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMovieMan_Click(object sender, EventArgs e)
+        {
+            MovieManagement mm = new MovieManagement(name);
+            mm.Show();
+            this.Close();
         }
 
         

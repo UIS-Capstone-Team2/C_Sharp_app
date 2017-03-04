@@ -16,9 +16,12 @@ namespace SoftTopics
         private SqlConnection myConn;
         private SqlCommand myCmd;
         private SqlDataReader myReader;
-        public EmployeeManagement()
+        string Name;
+        public EmployeeManagement(string name)
         {
             InitializeComponent();
+            lblName.Text = name;
+            this.Name = name;
         }
 
         private void EmployeeManagement_Load(object sender, EventArgs e)
@@ -178,6 +181,51 @@ namespace SoftTopics
         private void btnUpdateList_Click(object sender, EventArgs e)
         {
             updateTable();
+        }
+
+        private void lblLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMovieMan_Click(object sender, EventArgs e)
+        {
+            MovieManagement mm = new MovieManagement(Name);
+            mm.Show();
+            this.Close();
+        }
+
+        private void btnManagement_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCustomerMan_Click(object sender, EventArgs e)
+        {
+            CustomerManagement cm = new CustomerManagement(Name);
+            cm.Show();
+            this.Close();
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            Reports reportsForm = new Reports(Name);
+            reportsForm.Show();
+            this.Close();
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            Returns returnForm = new Returns(Name);
+            returnForm.Show();
+            this.Close();
+        }
+
+        private void btnRent_Click(object sender, EventArgs e)
+        {
+            RentForm rent = new RentForm(Name);
+            rent.Show();
+            this.Close();
         }
     }
 
