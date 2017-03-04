@@ -16,6 +16,7 @@ namespace SoftTopics
     {
 
         string name;
+        bool ManagerEnabled;
         private SqlConnection myConn;
         private SqlCommand myCmd;
         private SqlDataReader myReader;
@@ -27,17 +28,39 @@ namespace SoftTopics
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RentForm rentForm = new RentForm(name);
+            RentForm rentForm = new RentForm(name, ManagerEnabled);
 
             rentForm.Show();
 
+        }
+
+        private void updateManger()
+        {
+            if (!ManagerEnabled)
+            {
+                lblName.ForeColor = Color.LimeGreen;
+                btnManagement.Enabled = true;
+                btnManagement.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnRent.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnReturn.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnReports.FlatAppearance.BorderColor = Color.LimeGreen;
+                button1.FlatAppearance.BorderColor = Color.LimeGreen;
+                button2.FlatAppearance.BorderColor = Color.LimeGreen;
+            }
+            else
+            {
+                btnManagement.Enabled = false;
+                btnManagement.FlatAppearance.BorderColor = Color.Red;
+            }
+ 
         }
 
         private void HomeScreen_Load(object sender, EventArgs e)
         {
 
             getName(name);
-
+            updateManger();
+            
             lblName.Text = name;
             updateOverdue();
         }
@@ -136,36 +159,41 @@ namespace SoftTopics
             if (Manager.Equals("N"))
             {
                 btnManagement.Enabled = false;
+                ManagerEnabled = true;
+            }
+            else
+            {
+                ManagerEnabled = false;
             }
         }
 
         private void btnManagement_Click(object sender, EventArgs e)
         {
-            EmployeeManagement EMForm = new EmployeeManagement(name);
+            EmployeeManagement EMForm = new EmployeeManagement(name, ManagerEnabled);
             EMForm.Show();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            CustomerManagement CMForm = new CustomerManagement(name);
+            CustomerManagement CMForm = new CustomerManagement(name, ManagerEnabled);
             CMForm.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MovieManagement movieMan = new MovieManagement(name);
+            MovieManagement movieMan = new MovieManagement(name, ManagerEnabled);
             movieMan.Show();
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            Returns rtn = new Returns(name);
+            Returns rtn = new Returns(name, ManagerEnabled);
             rtn.Show();
         }
 
         private void btnReports_Click(object sender, EventArgs e)
         {
-            Reports reports = new Reports(name);
+            Reports reports = new Reports(name, ManagerEnabled);
             reports.Show();
         }
 

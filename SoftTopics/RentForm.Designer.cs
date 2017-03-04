@@ -692,6 +692,7 @@
             this.Name = "RentForm";
             this.Text = "Rentals";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.RentForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtRentalDays)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPaidAmount)).EndInit();
             this.groupBox1.ResumeLayout(false);

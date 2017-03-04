@@ -12,8 +12,10 @@ using System.IO;
 
 namespace SoftTopics
 {
+    
     public partial class RentForm : Form
     {
+        bool ManagerEnabled;
         private SqlConnection myConn;
         private SqlCommand myCmd;
         private SqlDataReader myReader;
@@ -22,11 +24,12 @@ namespace SoftTopics
         private string CustomerPhone;
         int totalPrice;
         string name;
-        public RentForm(string name)
+        public RentForm(string name, bool managerEnabled)
         {
             InitializeComponent();
             this.name = name;
             lblName.Text = name;
+            this.ManagerEnabled = managerEnabled;
         }
 
         private void btnFind_Click(object sender, EventArgs e)
@@ -458,37 +461,57 @@ namespace SoftTopics
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            Returns returnForm = new Returns(name);
+            Returns returnForm = new Returns(name, ManagerEnabled);
             returnForm.Show();
             this.Close();
         }
 
         private void btnReports_Click(object sender, EventArgs e)
         {
-            Reports reports = new Reports(name);
+            Reports reports = new Reports(name, ManagerEnabled);
             reports.Show();
             this.Close();
         }
 
         private void btnCustomerMan_Click(object sender, EventArgs e)
         {
-            CustomerManagement cm = new CustomerManagement(name);
+            CustomerManagement cm = new CustomerManagement(name, ManagerEnabled);
             cm.Show();
             this.Close();
         }
 
         private void btnManagement_Click(object sender, EventArgs e)
         {
-            EmployeeManagement em = new EmployeeManagement(name);
+            EmployeeManagement em = new EmployeeManagement(name, ManagerEnabled);
             em.Show();
             this.Close();
         }
 
         private void btnMovieMan_Click(object sender, EventArgs e)
         {
-            MovieManagement mm = new MovieManagement(name);
+            MovieManagement mm = new MovieManagement(name, ManagerEnabled);
             mm.Show();
             this.Close();
+        }
+
+        private void RentForm_Load(object sender, EventArgs e)
+        {
+            if (!ManagerEnabled)
+            {
+                lblName.ForeColor = Color.LimeGreen;
+                btnManagement.Enabled = true;
+                btnManagement.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnRent.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnReturn.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnReports.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnCustomerMan.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnMovieMan.FlatAppearance.BorderColor = Color.LimeGreen;
+            }
+            else
+            {
+                btnManagement.Enabled = false;
+                btnManagement.FlatAppearance.BorderColor = Color.Red;
+            }
         }
 
 

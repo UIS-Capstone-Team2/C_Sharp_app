@@ -18,15 +18,36 @@ namespace SoftTopics
         Font myFont;
         StreamReader fileToPrint;
         string name;
-        public MovieManagement(string name)
+        bool ManagerEnabled;
+        public MovieManagement(string name, bool mangerEnabled)
         {
             InitializeComponent();
             this.name = name;
             lblName.Text = name;
+            this.ManagerEnabled = mangerEnabled;
         }
 
         private void MovieManagement_Load(object sender, EventArgs e)
         {
+            if (!ManagerEnabled)
+            {
+                lblName.ForeColor = Color.LimeGreen;
+                btnManagement.Enabled = true;
+                btnManagement.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnRent.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnReturn.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnReports.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnCustomerMan.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnMovieMan.FlatAppearance.BorderColor = Color.LimeGreen;
+            }
+            else
+            {
+                btnManagement.Enabled = false;
+                btnManagement.FlatAppearance.BorderColor = Color.Red;
+            }
+
+
+
             loadFont();
             string movieFile = "..\\Files\\MovieList.txt";
             using (StreamReader sr = new StreamReader(movieFile))
@@ -151,35 +172,35 @@ namespace SoftTopics
 
         private void btnManagement_Click(object sender, EventArgs e)
         {
-            EmployeeManagement em = new EmployeeManagement(name);
+            EmployeeManagement em = new EmployeeManagement(name, ManagerEnabled);
             em.Show();
             this.Close();
         }
 
         private void btnCustomerMan_Click(object sender, EventArgs e)
         {
-            CustomerManagement cm = new CustomerManagement(name);
+            CustomerManagement cm = new CustomerManagement(name, ManagerEnabled);
             cm.Show();
             this.Close();
         }
 
         private void btnReports_Click(object sender, EventArgs e)
         {
-            Reports reports = new Reports(name);
+            Reports reports = new Reports(name, ManagerEnabled);
             reports.Show();
             this.Close();
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            Returns returns = new Returns(name);
+            Returns returns = new Returns(name, ManagerEnabled);
             returns.Show();
             this.Close();
         }
 
         private void btnRent_Click(object sender, EventArgs e)
         {
-            RentForm rentForm = new RentForm(name);
+            RentForm rentForm = new RentForm(name, ManagerEnabled);
             rentForm.Show();
             this.Close();
         }

@@ -241,6 +241,7 @@
             this.Name = "Reports";
             this.Text = "Reports";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Reports_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

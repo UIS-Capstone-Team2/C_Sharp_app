@@ -319,6 +319,7 @@
             this.lblLogout.TabIndex = 57;
             this.lblLogout.TabStop = true;
             this.lblLogout.Text = "Clear Screen";
+            this.lblLogout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblLogout_LinkClicked);
             // 
             // CustomerManagement
             // 
