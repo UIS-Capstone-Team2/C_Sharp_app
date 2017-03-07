@@ -35,6 +35,7 @@
     <StartupObject>SoftTopics.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="MigraDoc.DocumentObjectModel">
       <HintPath>..\..\..\..\Desktop\PDFLibrary\GDI+\MigraDoc.DocumentObjectModel.dll</HintPath>
     </Reference>

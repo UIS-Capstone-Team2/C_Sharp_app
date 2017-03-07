@@ -138,5 +138,10 @@ namespace SoftTopics
                 btnManagement.FlatAppearance.BorderColor = Color.Red;
             }
         }
+
+        private void lblLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

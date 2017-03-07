@@ -56,7 +56,7 @@
             this.lvMovies.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.MovieTitle,
             this.Barcode});
-            this.lvMovies.Location = new System.Drawing.Point(126, 299);
+            this.lvMovies.Location = new System.Drawing.Point(114, 309);
             this.lvMovies.Name = "lvMovies";
             this.lvMovies.Size = new System.Drawing.Size(510, 330);
             this.lvMovies.TabIndex = 0;
@@ -131,7 +131,7 @@
             // 
             this.lblBarcode.AutoSize = true;
             this.lblBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBarcode.Location = new System.Drawing.Point(262, 242);
+            this.lblBarcode.Location = new System.Drawing.Point(940, 588);
             this.lblBarcode.Name = "lblBarcode";
             this.lblBarcode.Size = new System.Drawing.Size(0, 51);
             this.lblBarcode.TabIndex = 6;

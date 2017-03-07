@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using Microsoft.VisualBasic;
 
 namespace SoftTopics
 {
@@ -160,12 +161,73 @@ namespace SoftTopics
             {
                 btnManagement.Enabled = false;
                 ManagerEnabled = true;
+                tempPass(ID);
             }
             else
             {
                 ManagerEnabled = false;
             }
         }
+
+        private void tempPass(string ID)
+        {
+            bool change = false;
+            string tempPassFile = "..\\Files\\TempPassword.txt";
+            using (StreamReader sr = new StreamReader(tempPassFile))
+            {
+                string line;
+                while ((line = sr.ReadLine()) !=null)
+                {
+                    if (line.Equals(ID))
+                    {
+                        change = true;
+                        break;
+                    }
+                }
+            }
+
+            if (change)
+            {
+                changePass(ID);
+            }
+ 
+        }
+
+        private void changePass(string ID)
+        {
+
+
+            string newPass = Microsoft.VisualBasic.Interaction.InputBox("Please enter a new password", "New Password");
+            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=S0ftT0pix!; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            myConn.Open();
+            myCmd = new SqlCommand("SELECT FName, Manager FROM UserTable WHERE IDNumber = @Uname", myConn);
+            myCmd.Parameters.AddWithValue("@Uname", ID);
+
+            //Delete then re add
+
+
+            string tempPassFile = "..\\Files\\TempPassword.txt";
+            string tempFile = "..\\Files\\temp.txt";
+
+            using (StreamReader sr = new StreamReader(tempPassFile))
+            {
+                using (StreamWriter sw = new StreamWriter(tempFile))
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (!line.Equals(ID))
+                        {
+                            sw.WriteLine(line);
+                        }
+                    }
+                }
+            }
+
+            File.Delete(tempPassFile);
+            File.Move(tempFile, tempPassFile);
+        }
+
 
         private void btnManagement_Click(object sender, EventArgs e)
         {
