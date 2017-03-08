@@ -54,7 +54,7 @@ namespace SoftTopics
                 btnManagement.Enabled = false;
                 btnManagement.FlatAppearance.BorderColor = Color.Red;
             }
- 
+
         }
 
         private void HomeScreen_Load(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace SoftTopics
 
             getName(name);
             updateManger();
-            
+
             lblName.Text = name;
             updateOverdue();
         }
@@ -148,7 +148,7 @@ namespace SoftTopics
         private void getName(string ID)
         {
             myConn = new SqlConnection();
-            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; 
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString;
             myConn.Open();
             myCmd = new SqlCommand("SELECT FName, Manager FROM UserTable WHERE IDNumber = @Uname", myConn);
             myCmd.Parameters.AddWithValue("@Uname", ID);
@@ -178,7 +178,7 @@ namespace SoftTopics
             using (StreamReader sr = new StreamReader(tempPassFile))
             {
                 string line;
-                while ((line = sr.ReadLine()) !=null)
+                while ((line = sr.ReadLine()) != null)
                 {
                     if (line.Equals(ID))
                     {
@@ -192,7 +192,7 @@ namespace SoftTopics
             {
                 changePass(ID);
             }
- 
+
         }
 
         private void changePass(string ID)
@@ -201,12 +201,24 @@ namespace SoftTopics
 
             string newPass = Microsoft.VisualBasic.Interaction.InputBox("Please enter a new password", "New Password");
             myConn = new SqlConnection();
-            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; 
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString;
             myConn.Open();
-            myCmd = new SqlCommand("SELECT FName, Manager FROM UserTable WHERE IDNumber = @Uname", myConn);
+            myCmd = new SqlCommand("SELECT FName, Manager, LName, IDNumber FROM UserTable WHERE IDNumber = @Uname", myConn);
             myCmd.Parameters.AddWithValue("@Uname", ID);
 
-            //Delete then re add
+            myReader = myCmd.ExecuteReader();
+            myReader.Read();
+
+            string FirstName = (string)myReader.GetValue(myReader.GetOrdinal("FName"));
+            string LastName = (string)myReader.GetValue(myReader.GetOrdinal("LName"));
+            int IDNumber = (int)myReader.GetValue(myReader.GetOrdinal("IDNumber"));
+            string Manager = (string)myReader.GetValue(myReader.GetOrdinal("Manager"));
+
+            
+
+
+            DeleteEmployee(FirstName, LastName, IDNumber);
+            AddEmployee(FirstName, LastName, IDNumber, Manager, newPass);
 
 
             string tempPassFile = "..\\Files\\TempPassword.txt";
@@ -229,6 +241,40 @@ namespace SoftTopics
 
             File.Delete(tempPassFile);
             File.Move(tempFile, tempPassFile);
+        }
+
+        private void DeleteEmployee(string FName, string LName, int IDNumber)
+        {
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString;
+            myConn.Open();
+            myCmd = new SqlCommand(@"DELETE FROM UserTable Where 
+                FName = @FName
+                AND LName = @LName 
+                AND IDNumber = @IDNumber", myConn);
+            myCmd.Parameters.AddWithValue("@FName", FName);
+            myCmd.Parameters.AddWithValue("@LName", LName);
+            myCmd.Parameters.AddWithValue("@IDNumber", IDNumber);
+            myCmd.ExecuteNonQuery();
+            myConn.Close();
+
+        }
+
+
+        private void AddEmployee(string FName, string LName, int ID, string Manager, string Pass)
+        {
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString;
+            myConn.Open();
+            myCmd = new SqlCommand(@"INSERT INTO UserTable (FName, LName, IDNumber, Manager, PassPhrase)
+                VALUES (@FName, @LName, @IDNumber, @Manager, @PassPhrase)", myConn);
+            myCmd.Parameters.AddWithValue("@FName", FName);
+            myCmd.Parameters.AddWithValue("@LName", LName);
+            myCmd.Parameters.AddWithValue("@IDNumber", ID);
+            myCmd.Parameters.AddWithValue("@Manager", Manager);
+            myCmd.Parameters.AddWithValue("@PassPhrase", Pass);
+            myCmd.ExecuteNonQuery();
+            myConn.Close();
         }
 
 

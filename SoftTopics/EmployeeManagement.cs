@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.IO;
 
 namespace SoftTopics
 {
@@ -144,6 +145,17 @@ namespace SoftTopics
             myCmd.ExecuteNonQuery();
             myConn.Close();
             updateTable();
+
+            if (Manager.Equals("N"))
+            {
+                using (StreamWriter sw = File.AppendText("..\\Files\\TempPassword.txt"))
+                {
+                    sw.WriteLine(ID);
+                }
+
+                MessageBox.Show("Employee will be asked to change password upon logon", "Temporary Password");
+            }
+
         }
 
         private void txtBoxTextChanged(object sender, EventArgs e)
