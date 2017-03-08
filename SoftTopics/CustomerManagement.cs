@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace SoftTopics
 {
@@ -34,7 +35,7 @@ namespace SoftTopics
             FName = txtFirstName.Text;
             LName = txtLastName.Text;
             PhoneNumber = txtPhoneNumber.Text;
-            findCust(FName, LName, PhoneNumber);
+            findCust(FName, LName, PhoneNumber, "");
             if (lvCustomers.Items.Count != 0)
             {
                 btnEdit.Enabled = true;
@@ -45,21 +46,23 @@ namespace SoftTopics
             }
         }
 
-        private void findCust(string FName, string LName, string PNumber)
+        private void findCust(string FName, string LName, string PNumber, string CustomerCard)
         {
             lvCustomers.Items.Clear();
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=xxxxxx; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
-            myConn.Open();
-            myCmd = new SqlCommand(@"SELECT FName, LName, PhoneNumber FROM Customers WHERE 
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; myConn.Open();
+            myCmd = new SqlCommand(@"SELECT FName, LName, PhoneNumber, CustomerCard FROM Customers WHERE 
             (FName = @Fname AND LName = @Lname)
             OR (FName = @Fname AND PhoneNumber = @PNumber)
             OR (LName = @Lname AND PhoneNumber = @PNumber)
             OR (LName = @Lname)
             OR (FName = @Fname)
-            OR (PhoneNumber = @Pnumber)", myConn);
+            OR (PhoneNumber = @Pnumber)
+            OR (CustomerCard = @CustomerCard)", myConn);
             myCmd.Parameters.AddWithValue("@Fname", FName);
             myCmd.Parameters.AddWithValue("@Lname", LName);
             myCmd.Parameters.AddWithValue("@PNumber", PNumber);
+            myCmd.Parameters.AddWithValue("@CustomerCard",CustomerCard);
 
 
 
@@ -106,8 +109,8 @@ namespace SoftTopics
 
         private Boolean exactMatch(string FName, string LName, string PhoneNumber)
         {
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=xxxxxx; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
-            myConn.Open();
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; myConn.Open();
             myCmd = new SqlCommand(@"SELECT FName, LName, PhoneNumber FROM Customers WHERE 
             (FName = @Fname AND LName = @Lname AND PhoneNumber = @PNumber)", myConn);
             myCmd.Parameters.AddWithValue("@Fname", FName);
@@ -153,7 +156,8 @@ namespace SoftTopics
         private void addCustomer(string FName, string LName, string PhoneNumber)
         {
             string customerCard = txtCustomerCard.Text;
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=XXXXX; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; 
             myConn.Open();
             myCmd = new SqlCommand(@"INSERT INTO Customers (FName, LName, PhoneNumber)
                 VALUES (@FName, @LName, @PhoneNumber)", myConn);
@@ -187,7 +191,11 @@ namespace SoftTopics
 
         private void deleteCustomer(string FName, string LName, string PNumber)
         {
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=S0ftT0pix!; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+
+
+
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString;
             myConn.Open();
             myCmd = new SqlCommand(@"DELETE FROM Customers Where 
                 FName = @FName
@@ -263,6 +271,15 @@ namespace SoftTopics
         private void lblLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Close();
+        }
+
+        private void txtCustomerCard_TextChanged_1(object sender, EventArgs e)
+        {
+            if (txtCustomerCard.Text.Length == 13)
+            {
+                string CustomerCard = txtCustomerCard.Text;
+                findCust("", "", "", CustomerCard);
+            }
         }
     }
 }

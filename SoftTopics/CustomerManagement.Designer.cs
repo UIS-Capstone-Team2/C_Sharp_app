@@ -129,14 +129,17 @@
             // FirstName
             // 
             this.FirstName.Text = "First Name";
+            this.FirstName.Width = 130;
             // 
             // LastName
             // 
             this.LastName.Text = "Last Name";
+            this.LastName.Width = 130;
             // 
             // PhoneNumber
             // 
             this.PhoneNumber.Text = "Phone Number";
+            this.PhoneNumber.Width = 130;
             // 
             // btnSearch
             // 
@@ -199,6 +202,7 @@
             this.txtCustomerCard.Name = "txtCustomerCard";
             this.txtCustomerCard.Size = new System.Drawing.Size(132, 27);
             this.txtCustomerCard.TabIndex = 11;
+            this.txtCustomerCard.TextChanged += new System.EventHandler(this.txtCustomerCard_TextChanged_1);
             // 
             // lblName
             // 

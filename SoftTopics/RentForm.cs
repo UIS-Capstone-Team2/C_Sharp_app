@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using System.Configuration;
 
 namespace SoftTopics
 {
@@ -48,7 +49,8 @@ namespace SoftTopics
         {
             string customerCard = txtCustomerCard.Text;
 
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=S0ftT0pix!; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; 
             myConn.Open();
             myCmd = new SqlCommand(@"SELECT FName, LName, PhoneNumber, CustomerCard FROM Customers WHERE 
             (FName = @Fname AND LName = @Lname)
@@ -224,9 +226,13 @@ namespace SoftTopics
                 System.DateTime checkedOut = new System.DateTime(dateYear, dateMonth, dateDay);
 
                 System.TimeSpan late = today.Subtract(checkedOut);
+
                 int lateDays = late.Days;
-                overdueDays += lateDays;
-                overdueMovies++;
+                if (lateDays > 0)
+                {
+                    overdueDays += lateDays;
+                    overdueMovies++;
+                }
 
             }
             filePath.Close();

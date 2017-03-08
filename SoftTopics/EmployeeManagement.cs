@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace SoftTopics
 {
@@ -50,7 +51,8 @@ namespace SoftTopics
         private void updateTable()
         {
             lvEmployees.Items.Clear();
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=S0ftT0pix!; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; 
             myConn.Open();
             myCmd = new SqlCommand("SELECT FName, LName, IDNumber, Manager FROM UserTable", myConn);
             myReader = myCmd.ExecuteReader();
@@ -112,7 +114,8 @@ namespace SoftTopics
 
         private void DeleteEmployee(string FName, string LName, int IDNumber)
         {
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=S0ftT0pix!; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; 
             myConn.Open();
             myCmd = new SqlCommand(@"DELETE FROM UserTable Where 
                 FName = @FName
@@ -128,7 +131,8 @@ namespace SoftTopics
 
         private void AddEmployee(string FName, string LName, int ID, string Manager, string Pass)
         {
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=S0ftT0pix!; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; 
             myConn.Open();
             myCmd = new SqlCommand(@"INSERT INTO UserTable (FName, LName, IDNumber, Manager, PassPhrase)
                 VALUES (@FName, @LName, @IDNumber, @Manager, @PassPhrase)", myConn);
@@ -162,7 +166,8 @@ namespace SoftTopics
             string LName = txtLName.Text;
             string Pass = txtPassword.Text;
             string Manager = txtManager.Text;
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=S0ftT0pix!; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; 
             myConn.Open();
             myCmd = new SqlCommand("SELECT IDNumber, FName FROM UserTable WHERE IDNumber = @Uname AND FName = @FName", myConn);
             myCmd.Parameters.AddWithValue("@Uname", ID);

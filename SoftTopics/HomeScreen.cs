@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
 using Microsoft.VisualBasic;
+using System.Configuration;
 
 namespace SoftTopics
 {
@@ -146,7 +147,8 @@ namespace SoftTopics
 
         private void getName(string ID)
         {
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=S0ftT0pix!; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; 
             myConn.Open();
             myCmd = new SqlCommand("SELECT FName, Manager FROM UserTable WHERE IDNumber = @Uname", myConn);
             myCmd.Parameters.AddWithValue("@Uname", ID);
@@ -198,7 +200,8 @@ namespace SoftTopics
 
 
             string newPass = Microsoft.VisualBasic.Interaction.InputBox("Please enter a new password", "New Password");
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=S0ftT0pix!; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; 
             myConn.Open();
             myCmd = new SqlCommand("SELECT FName, Manager FROM UserTable WHERE IDNumber = @Uname", myConn);
             myCmd.Parameters.AddWithValue("@Uname", ID);
