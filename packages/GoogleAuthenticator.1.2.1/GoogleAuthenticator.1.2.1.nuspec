@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>GoogleAuthenticator</id>
+    <version>1.2.1</version>
+    <title>Google Authenticator Two-Factor Authentication Library</title>
+    <authors>Brandon Potter</authors>
+    <owners>Brandon Potter</owners>
+    <projectUrl>http://github.com/brandonpotter/GoogleAuthenticator</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides an easy-to-use library for implementing Two-Factor Authentication with Google Authenticator or Authy.</description>
+    <summary />
+    <releaseNotes>Fixed issue with non-FIPS client managed crypto provider and auto-fallback to unmanaged provider when necessary.</releaseNotes>
+    <copyright>Copyright (c) 2016 Brandon Potter, 'Google' refers to mobile app title and does not imply this library is affiliated with Google in any way.</copyright>
+  </metadata>
+</package>

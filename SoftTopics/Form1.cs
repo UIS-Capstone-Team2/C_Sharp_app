@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
 using System.Configuration;
+using Google.Authenticator;
 
 namespace SoftTopics
 {
@@ -40,6 +41,7 @@ namespace SoftTopics
             myCmd.Parameters.AddWithValue("@Pass", PWord);
 
             var test = myCmd.ExecuteScalar();
+            
 
             if (test == null)
             {
@@ -48,29 +50,28 @@ namespace SoftTopics
             }
             else
             {
-                
-                Boolean valid = true;
-                HSForm = new HomeScreen(txtUsername.Text);
-                myConn.Close();
-
-                string loginReport = "..\\Files\\LoginReport.txt";
-                using (StreamWriter sw = File.AppendText(loginReport))
+                btnSubmit.Enabled = true;
+                txtPIN.Enabled = true;
+                string twoFactFile = "..\\Files\\TwoFactorSetup.txt";
+                bool setup = true;
+                using (StreamReader sr = new StreamReader(twoFactFile))
                 {
-                    System.DateTime dt = DateTime.Today;
-                    string day = dt.Day.ToString();
-                    string month = dt.Month.ToString();
-                    string year = dt.Year.ToString();
-
-                    string fullString = txtUsername.Text + "," + day + "," + month + "," + year;
-                    sw.WriteLine(fullString);
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (line.Equals(UName))
+                        {
+                            setup = false;
+                        }
+                    }
                 }
 
-                txtPassword.Text = "";
-                txtUsername.Text = "";
-                this.Hide();
-                HSForm.ShowDialog();
-                this.Show();
+                if (setup)
+                {
+                    login();
+                }
             }
+
         }
 
         private void formLogin_Load(object sender, EventArgs e)
@@ -83,6 +84,56 @@ namespace SoftTopics
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void login()
+        {
+
+            Boolean valid = true;
+            HSForm = new HomeScreen(txtUsername.Text);
+            myConn.Close();
+
+            string loginReport = "..\\Files\\LoginReport.txt";
+            using (StreamWriter sw = File.AppendText(loginReport))
+            {
+                System.DateTime dt = DateTime.Today;
+                string day = dt.Day.ToString();
+                string month = dt.Month.ToString();
+                string year = dt.Year.ToString();
+
+                string fullString = txtUsername.Text + "," + day + "," + month + "," + year;
+                sw.WriteLine(fullString);
+            }
+
+            txtPassword.Text = "";
+            txtUsername.Text = "";
+            txtPIN.Text = "";
+            lblSuccess.Text = "";
+            txtPIN.Enabled = false;
+            btnSubmit.Enabled = false;
+            this.Hide();
+            HSForm.ShowDialog();
+            this.Show();
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            bool checkPin = false;
+            string pin = txtPIN.Text;
+            TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
+            checkPin = tfa.ValidateTwoFactorPIN(("!8R8Vrreugfifbtljuf" + txtUsername.Text), pin);
+            
+            if (!checkPin)
+            {
+                btnSubmit.Enabled = false;
+                txtPIN.Enabled = false;
+                lblSuccess.Text = "Invalid PIN";
+                txtPIN.Text = "";
+            }
+            else
+            {
+                login();
             }
         }
 
