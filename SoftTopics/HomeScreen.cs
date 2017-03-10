@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.IO;
 using Microsoft.VisualBasic;
 using System.Configuration;
+using Google.Authenticator;
 
 namespace SoftTopics
 {
@@ -18,6 +19,7 @@ namespace SoftTopics
     {
 
         string name;
+        string ID;
         bool ManagerEnabled;
         private SqlConnection myConn;
         private SqlCommand myCmd;
@@ -25,6 +27,7 @@ namespace SoftTopics
         public HomeScreen(string name)
         {
             InitializeComponent();
+            this.ID = name;
             this.name = name;
         }
 
@@ -60,12 +63,42 @@ namespace SoftTopics
         private void HomeScreen_Load(object sender, EventArgs e)
         {
 
+            check2ndFactor();
             getName(name);
             updateManger();
+            
 
             lblName.Text = name;
             updateOverdue();
         }
+
+        private void check2ndFactor()
+        {
+            string twoFile = "..\\Files\\TwoFactorSetup.txt";
+            bool setup = true;
+            using (StreamReader sr = new StreamReader(twoFile))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (line.Equals(ID))
+                    {
+                        setup = false;
+                    }
+                }
+            }
+
+            if (setup)
+            {
+                _2ndFactorSetup _2Fact = new _2ndFactorSetup(ID);
+                this.Hide();
+                _2Fact.ShowDialog();
+                this.Close();
+
+            }
+            
+        }
+
 
         private void updateOverdue()
         {
