@@ -112,6 +112,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "_2ndFactorSetup";
             this.Text = "_2ndFactorSetup";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this._2ndFactorSetup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imgQRCode)).EndInit();
             this.ResumeLayout(false);
