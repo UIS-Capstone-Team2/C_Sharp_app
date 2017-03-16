@@ -46,6 +46,23 @@ namespace SoftTopics
             }
         }
 
+        private void AlphaOnly(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void NumericOnly(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
         private void findCust(string FName, string LName, string PNumber, string CustomerCard)
         {
             lvCustomers.Items.Clear();

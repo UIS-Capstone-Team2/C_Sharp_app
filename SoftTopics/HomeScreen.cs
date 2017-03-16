@@ -275,6 +275,13 @@ namespace SoftTopics
             File.Delete(tempPassFile);
             File.Move(tempFile, tempPassFile);
         }
+        private string pass(string oldPass)
+        {
+            System.Security.Cryptography.MD5CryptoServiceProvider newPass = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(oldPass);
+            data = newPass.ComputeHash(data);
+            return System.Text.Encoding.ASCII.GetString(data);
+        }
 
         private void DeleteEmployee(string FName, string LName, int IDNumber)
         {
@@ -296,6 +303,7 @@ namespace SoftTopics
 
         private void AddEmployee(string FName, string LName, int ID, string Manager, string Pass)
         {
+            Pass = pass(Pass);
             myConn = new SqlConnection();
             myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString;
             myConn.Open();

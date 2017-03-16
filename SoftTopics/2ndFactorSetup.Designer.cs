@@ -28,13 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(_2ndFactorSetup));
             this.imgQRCode = new System.Windows.Forms.PictureBox();
             this.lblQRText = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.txtPIN = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblWrongPin = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgQRCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // imgQRCode
@@ -77,6 +81,7 @@
             this.txtPIN.Name = "txtPIN";
             this.txtPIN.Size = new System.Drawing.Size(119, 20);
             this.txtPIN.TabIndex = 3;
+            this.txtPIN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressed);
             // 
             // label1
             // 
@@ -97,12 +102,34 @@
             this.lblWrongPin.Size = new System.Drawing.Size(0, 13);
             this.lblWrongPin.TabIndex = 5;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(1163, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(151, 150);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(1109, 165);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(247, 20);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Powered by Google Authenticator";
+            // 
             // _2ndFactorSetup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1366, 700);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblWrongPin);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPIN);
@@ -115,6 +142,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this._2ndFactorSetup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imgQRCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,5 +156,7 @@
         private System.Windows.Forms.TextBox txtPIN;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblWrongPin;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label2;
     }
 }

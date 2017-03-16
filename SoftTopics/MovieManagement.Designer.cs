@@ -81,6 +81,7 @@
             this.txtBarcode.Size = new System.Drawing.Size(148, 27);
             this.txtBarcode.TabIndex = 1;
             this.txtBarcode.TextChanged += new System.EventHandler(this.txtBarcode_TextChanged);
+            this.txtBarcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnly);
             // 
             // txtTitle
             // 

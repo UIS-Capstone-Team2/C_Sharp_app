@@ -73,6 +73,7 @@
             this.txtFirstName.Size = new System.Drawing.Size(132, 27);
             this.txtFirstName.TabIndex = 1;
             this.txtFirstName.TextChanged += new System.EventHandler(this.txtTextBoxTextChange);
+            this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AlphaOnly);
             // 
             // label2
             // 
@@ -93,6 +94,7 @@
             this.txtLastName.Size = new System.Drawing.Size(132, 27);
             this.txtLastName.TabIndex = 3;
             this.txtLastName.TextChanged += new System.EventHandler(this.txtTextBoxTextChange);
+            this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AlphaOnly);
             // 
             // txtPhoneNumber
             // 
@@ -102,6 +104,7 @@
             this.txtPhoneNumber.Size = new System.Drawing.Size(132, 27);
             this.txtPhoneNumber.TabIndex = 5;
             this.txtPhoneNumber.TextChanged += new System.EventHandler(this.txtTextBoxTextChange);
+            this.txtPhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnly);
             // 
             // label3
             // 
@@ -203,6 +206,7 @@
             this.txtCustomerCard.Size = new System.Drawing.Size(132, 27);
             this.txtCustomerCard.TabIndex = 11;
             this.txtCustomerCard.TextChanged += new System.EventHandler(this.txtCustomerCard_TextChanged_1);
+            this.txtCustomerCard.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnly);
             // 
             // lblName
             // 

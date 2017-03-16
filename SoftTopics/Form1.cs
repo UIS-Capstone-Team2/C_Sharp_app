@@ -32,7 +32,8 @@ namespace SoftTopics
         private void button1_Click(object sender, EventArgs e)
         {
             string UName = txtUsername.Text;
-            string PWord = txtPassword.Text;
+            string PWord = pass(txtPassword.Text);
+            
             myConn = new SqlConnection();
             myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString;
             myConn.Open();
@@ -79,9 +80,25 @@ namespace SoftTopics
             
         }
 
+        private string pass(string oldPass)
+        {
+            System.Security.Cryptography.MD5CryptoServiceProvider newPass = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(oldPass);
+            data = newPass.ComputeHash(data);
+            return System.Text.Encoding.ASCII.GetString(data);
+        }
+
         private void KeyPressed(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void KeyPressedAlphaNum(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && !char.IsLetter(e.KeyChar))
             {
                 e.Handled = true;
             }

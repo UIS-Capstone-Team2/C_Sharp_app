@@ -145,6 +145,7 @@
             this.txtPassword.Size = new System.Drawing.Size(150, 27);
             this.txtPassword.TabIndex = 5;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtBoxTextChanged);
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressedAlphaNum);
             // 
             // label1
             // 

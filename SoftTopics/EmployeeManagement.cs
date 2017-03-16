@@ -95,6 +95,14 @@ namespace SoftTopics
             }
         }
 
+        private void KeyPressedAlphaNum(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             ListViewItem selected = lvEmployees.SelectedItems[0];
@@ -132,6 +140,7 @@ namespace SoftTopics
 
         private void AddEmployee(string FName, string LName, int ID, string Manager, string Pass)
         {
+            Pass = pass(Pass);
             myConn = new SqlConnection();
             myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; 
             myConn.Open();
@@ -156,6 +165,14 @@ namespace SoftTopics
                 MessageBox.Show("Employee will be asked to change password upon logon", "Temporary Password");
             }
 
+        }
+
+        private string pass(string oldPass)
+        {
+            System.Security.Cryptography.MD5CryptoServiceProvider newPass = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(oldPass);
+            data = newPass.ComputeHash(data);
+            return System.Text.Encoding.ASCII.GetString(data);
         }
 
         private void txtBoxTextChanged(object sender, EventArgs e)

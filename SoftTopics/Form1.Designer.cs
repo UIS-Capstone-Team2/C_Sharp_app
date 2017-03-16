@@ -67,6 +67,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(100, 20);
             this.txtPassword.TabIndex = 3;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressedAlphaNum);
             // 
             // label1
             // 
@@ -104,6 +105,7 @@
             this.txtPIN.Name = "txtPIN";
             this.txtPIN.Size = new System.Drawing.Size(100, 20);
             this.txtPIN.TabIndex = 7;
+            this.txtPIN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressed);
             // 
             // label3
             // 
