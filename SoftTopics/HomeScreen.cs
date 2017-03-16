@@ -12,6 +12,7 @@ using System.IO;
 using Microsoft.VisualBasic;
 using System.Configuration;
 using Google.Authenticator;
+using System.Text.RegularExpressions;
 
 namespace SoftTopics
 {
@@ -228,11 +229,24 @@ namespace SoftTopics
 
         }
 
+        
+
         private void changePass(string ID)
         {
 
 
             string newPass = Microsoft.VisualBasic.Interaction.InputBox("Please enter a new password", "New Password");
+            while (newPass.Length > 12)
+            {
+                newPass = Microsoft.VisualBasic.Interaction.InputBox("Please enter a password less than 12 characters", "New Password");
+            }
+
+            var alphaNumCheck = new Regex("^[a-zA-Z0-9 ]*$");
+            while (!alphaNumCheck.IsMatch(newPass))
+            {
+                newPass = Microsoft.VisualBasic.Interaction.InputBox("Please enter a password with letters and numbers only", "New Password");
+            }
+
             myConn = new SqlConnection();
             myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString;
             myConn.Open();
