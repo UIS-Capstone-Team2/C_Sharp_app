@@ -153,6 +153,7 @@
             this.txtCredentialBox.Location = new System.Drawing.Point(1006, 449);
             this.txtCredentialBox.MaxLength = 13;
             this.txtCredentialBox.Name = "txtCredentialBox";
+            this.txtCredentialBox.ShortcutsEnabled = false;
             this.txtCredentialBox.Size = new System.Drawing.Size(100, 20);
             this.txtCredentialBox.TabIndex = 10;
             this.txtCredentialBox.TextChanged += new System.EventHandler(this.textChangeTimeLimit);
