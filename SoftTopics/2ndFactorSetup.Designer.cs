@@ -37,6 +37,10 @@
             this.lblWrongPin = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgQRCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -122,12 +126,57 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Powered by Google Authenticator";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(12, 40);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(333, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Install and setup the Google Authenticator App on your mobile device";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(12, 66);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(301, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Press the Orange \'+\' circle in the bottom right corner of the app";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label5.Location = new System.Drawing.Point(12, 91);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(294, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Scan the QR Code to the right, or enter the code underneath";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label6.Location = new System.Drawing.Point(12, 118);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(410, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "The six digit pin on the app will change every 30 seconds, and you will need it t" +
+    "o login";
+            // 
             // _2ndFactorSetup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1366, 700);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblWrongPin);
@@ -158,5 +207,9 @@
         private System.Windows.Forms.Label lblWrongPin;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

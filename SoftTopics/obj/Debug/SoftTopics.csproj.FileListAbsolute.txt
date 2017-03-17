@@ -41,3 +41,8 @@ C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\de\MigraDo
 C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\de\PdfSharp.resources.dll
 C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\Google.Authenticator.dll
 C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics._2ndFactorSetup.resources
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\SoftTopics.exe.manifest
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\SoftTopics.application
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.TrustInfo.xml
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.exe.manifest
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.application

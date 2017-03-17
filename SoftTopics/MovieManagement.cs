@@ -131,6 +131,7 @@ namespace SoftTopics
                             lvMovies.Items.Add(new ListViewItem(newItem));
 
                             swTemp.WriteLine(barcode);
+                            swTemp.WriteLine(" ");
 
                             count--;
                         }
@@ -168,6 +169,7 @@ namespace SoftTopics
                 if (line == null)
                 {
                     break;
+
                 }
                 yPos = topMargin + count * printFont.GetHeight(e.Graphics);
                 e.Graphics.DrawString(line, printFont, Brushes.Black, leftMargin, yPos, new StringFormat());
