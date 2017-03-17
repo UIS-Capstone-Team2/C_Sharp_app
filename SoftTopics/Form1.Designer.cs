@@ -37,6 +37,8 @@
             this.txtPIN = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.btnQuickLogin = new System.Windows.Forms.Button();
+            this.txtCredentialBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -47,7 +49,7 @@
             this.btnLogin.Location = new System.Drawing.Point(708, 353);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(100, 86);
-            this.btnLogin.TabIndex = 0;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.button1_Click);
@@ -55,9 +57,10 @@
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(552, 353);
+            this.txtUsername.MaxLength = 13;
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(100, 20);
-            this.txtUsername.TabIndex = 2;
+            this.txtUsername.TabIndex = 1;
             this.txtUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressed);
             // 
             // txtPassword
@@ -66,7 +69,8 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(100, 20);
-            this.txtPassword.TabIndex = 3;
+            this.txtPassword.TabIndex = 2;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterKeyPress);
             this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressedAlphaNum);
             // 
             // label1
@@ -104,7 +108,7 @@
             this.txtPIN.MaxLength = 11;
             this.txtPIN.Name = "txtPIN";
             this.txtPIN.Size = new System.Drawing.Size(100, 20);
-            this.txtPIN.TabIndex = 7;
+            this.txtPIN.TabIndex = 4;
             this.txtPIN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressed);
             // 
             // label3
@@ -126,10 +130,32 @@
             this.btnSubmit.Location = new System.Drawing.Point(708, 470);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(100, 69);
-            this.btnSubmit.TabIndex = 9;
+            this.btnSubmit.TabIndex = 5;
             this.btnSubmit.Text = "Submit PIN";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // btnQuickLogin
+            // 
+            this.btnQuickLogin.FlatAppearance.BorderSize = 3;
+            this.btnQuickLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuickLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnQuickLogin.Location = new System.Drawing.Point(1128, 415);
+            this.btnQuickLogin.Name = "btnQuickLogin";
+            this.btnQuickLogin.Size = new System.Drawing.Size(100, 86);
+            this.btnQuickLogin.TabIndex = 9;
+            this.btnQuickLogin.Text = "Re-Login";
+            this.btnQuickLogin.UseVisualStyleBackColor = true;
+            this.btnQuickLogin.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // txtCredentialBox
+            // 
+            this.txtCredentialBox.Location = new System.Drawing.Point(1006, 449);
+            this.txtCredentialBox.MaxLength = 13;
+            this.txtCredentialBox.Name = "txtCredentialBox";
+            this.txtCredentialBox.Size = new System.Drawing.Size(100, 20);
+            this.txtCredentialBox.TabIndex = 10;
+            this.txtCredentialBox.TextChanged += new System.EventHandler(this.textChangeTimeLimit);
             // 
             // formLogin
             // 
@@ -137,6 +163,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1366, 700);
+            this.Controls.Add(this.txtCredentialBox);
+            this.Controls.Add(this.btnQuickLogin);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPIN);
@@ -168,6 +196,8 @@
         private System.Windows.Forms.TextBox txtPIN;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Button btnQuickLogin;
+        private System.Windows.Forms.TextBox txtCredentialBox;
     }
 }
 

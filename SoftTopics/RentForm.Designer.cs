@@ -126,7 +126,7 @@
             this.txtDVDID.MaxLength = 12;
             this.txtDVDID.Name = "txtDVDID";
             this.txtDVDID.Size = new System.Drawing.Size(142, 27);
-            this.txtDVDID.TabIndex = 3;
+            this.txtDVDID.TabIndex = 5;
             this.txtDVDID.TextChanged += new System.EventHandler(this.txtDVDID_TextChanged);
             // 
             // label4
@@ -146,7 +146,7 @@
             this.txtRentalDays.Location = new System.Drawing.Point(1087, 340);
             this.txtRentalDays.Name = "txtRentalDays";
             this.txtRentalDays.Size = new System.Drawing.Size(142, 27);
-            this.txtRentalDays.TabIndex = 5;
+            this.txtRentalDays.TabIndex = 6;
             // 
             // label5
             // 
@@ -198,7 +198,7 @@
             this.btnAddMovie.Location = new System.Drawing.Point(1246, 292);
             this.btnAddMovie.Name = "btnAddMovie";
             this.btnAddMovie.Size = new System.Drawing.Size(108, 75);
-            this.btnAddMovie.TabIndex = 11;
+            this.btnAddMovie.TabIndex = 7;
             this.btnAddMovie.Text = "Add Movie";
             this.btnAddMovie.UseVisualStyleBackColor = true;
             this.btnAddMovie.Click += new System.EventHandler(this.btnAddMovie_Click);
@@ -271,7 +271,7 @@
             this.btnFind.Location = new System.Drawing.Point(395, 430);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(144, 117);
-            this.btnFind.TabIndex = 17;
+            this.btnFind.TabIndex = 4;
             this.btnFind.Text = "Find";
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
@@ -282,7 +282,7 @@
             this.txtFirstName.Location = new System.Drawing.Point(177, 431);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(159, 27);
-            this.txtFirstName.TabIndex = 18;
+            this.txtFirstName.TabIndex = 1;
             this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
             this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressed);
             // 
@@ -292,7 +292,7 @@
             this.txtLastName.Location = new System.Drawing.Point(177, 476);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(159, 27);
-            this.txtLastName.TabIndex = 19;
+            this.txtLastName.TabIndex = 2;
             this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AlphaOnly);
             // 
             // label12
@@ -323,7 +323,7 @@
             this.txtPhoneNumber.Location = new System.Drawing.Point(177, 520);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(159, 27);
-            this.txtPhoneNumber.TabIndex = 22;
+            this.txtPhoneNumber.TabIndex = 3;
             this.txtPhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnly);
             // 
             // label14
@@ -449,7 +449,7 @@
             this.txtCustomerCard.MaxLength = 15;
             this.txtCustomerCard.Name = "txtCustomerCard";
             this.txtCustomerCard.Size = new System.Drawing.Size(164, 27);
-            this.txtCustomerCard.TabIndex = 31;
+            this.txtCustomerCard.TabIndex = 0;
             this.txtCustomerCard.TextChanged += new System.EventHandler(this.txtCustomerCard_TextChanged);
             this.txtCustomerCard.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnly);
             // 

@@ -49,7 +49,7 @@ namespace SoftTopics
 
 
             loadFont();
-            string movieFile = "..\\Files\\MovieList.txt";
+            string movieFile = Properties.Settings.Default.movieListPath;
             using (StreamReader sr = new StreamReader(movieFile))
             {
                 string line;
@@ -108,7 +108,7 @@ namespace SoftTopics
             if (txtTitle.Text.Length != 0 && txtBarcode.Text.Length == 10 && txtCopyNumber.Value > 0)
             {
                 int count = (int)txtCopyNumber.Value;
-                string movieFile = "..\\Files\\MovieList.txt";
+                string movieFile = Properties.Settings.Default.movieListPath;
                 using (StreamWriter sw = File.AppendText(movieFile))
                 {
                     using (StreamWriter swTemp = new StreamWriter("..\\Files\\temp.txt"))

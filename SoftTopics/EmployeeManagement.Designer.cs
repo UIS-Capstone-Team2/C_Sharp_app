@@ -99,7 +99,7 @@
             this.txtFName.MaxLength = 16;
             this.txtFName.Name = "txtFName";
             this.txtFName.Size = new System.Drawing.Size(150, 27);
-            this.txtFName.TabIndex = 1;
+            this.txtFName.TabIndex = 0;
             this.txtFName.TextChanged += new System.EventHandler(this.txtBoxTextChanged);
             this.txtFName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AlphaOnly);
             // 
@@ -110,7 +110,7 @@
             this.txtLName.MaxLength = 32;
             this.txtLName.Name = "txtLName";
             this.txtLName.Size = new System.Drawing.Size(150, 27);
-            this.txtLName.TabIndex = 2;
+            this.txtLName.TabIndex = 1;
             this.txtLName.TextChanged += new System.EventHandler(this.txtBoxTextChanged);
             this.txtLName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AlphaOnly);
             // 
@@ -121,7 +121,7 @@
             this.txtIDNum.MaxLength = 12;
             this.txtIDNum.Name = "txtIDNum";
             this.txtIDNum.Size = new System.Drawing.Size(150, 27);
-            this.txtIDNum.TabIndex = 3;
+            this.txtIDNum.TabIndex = 2;
             this.txtIDNum.TextChanged += new System.EventHandler(this.txtBoxTextChanged);
             this.txtIDNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnly);
             // 
@@ -132,7 +132,7 @@
             this.txtManager.MaxLength = 1;
             this.txtManager.Name = "txtManager";
             this.txtManager.Size = new System.Drawing.Size(150, 27);
-            this.txtManager.TabIndex = 4;
+            this.txtManager.TabIndex = 3;
             this.txtManager.TextChanged += new System.EventHandler(this.txtBoxTextChanged);
             this.txtManager.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AlphaOnly);
             // 
@@ -143,7 +143,7 @@
             this.txtPassword.MaxLength = 16;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(150, 27);
-            this.txtPassword.TabIndex = 5;
+            this.txtPassword.TabIndex = 4;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtBoxTextChanged);
             this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressedAlphaNum);
             // 

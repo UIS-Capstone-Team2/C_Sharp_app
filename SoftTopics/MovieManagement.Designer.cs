@@ -79,7 +79,7 @@
             this.txtBarcode.MaxLength = 10;
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(148, 27);
-            this.txtBarcode.TabIndex = 1;
+            this.txtBarcode.TabIndex = 0;
             this.txtBarcode.TextChanged += new System.EventHandler(this.txtBarcode_TextChanged);
             this.txtBarcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnly);
             // 
@@ -90,7 +90,7 @@
             this.txtTitle.MaxLength = 32;
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(148, 27);
-            this.txtTitle.TabIndex = 2;
+            this.txtTitle.TabIndex = 1;
             // 
             // label1
             // 
@@ -148,7 +148,7 @@
             0});
             this.txtCopyNumber.Name = "txtCopyNumber";
             this.txtCopyNumber.Size = new System.Drawing.Size(148, 27);
-            this.txtCopyNumber.TabIndex = 7;
+            this.txtCopyNumber.TabIndex = 2;
             // 
             // label3
             // 

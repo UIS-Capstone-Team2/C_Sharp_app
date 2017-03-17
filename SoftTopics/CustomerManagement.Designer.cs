@@ -92,7 +92,7 @@
             this.txtLastName.Location = new System.Drawing.Point(767, 589);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(132, 27);
-            this.txtLastName.TabIndex = 3;
+            this.txtLastName.TabIndex = 2;
             this.txtLastName.TextChanged += new System.EventHandler(this.txtTextBoxTextChange);
             this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AlphaOnly);
             // 
@@ -102,7 +102,7 @@
             this.txtPhoneNumber.Location = new System.Drawing.Point(767, 626);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(132, 27);
-            this.txtPhoneNumber.TabIndex = 5;
+            this.txtPhoneNumber.TabIndex = 3;
             this.txtPhoneNumber.TextChanged += new System.EventHandler(this.txtTextBoxTextChange);
             this.txtPhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnly);
             // 
@@ -153,7 +153,7 @@
             this.btnSearch.Location = new System.Drawing.Point(933, 550);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(100, 100);
-            this.btnSearch.TabIndex = 7;
+            this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -204,7 +204,7 @@
             this.txtCustomerCard.MaxLength = 15;
             this.txtCustomerCard.Name = "txtCustomerCard";
             this.txtCustomerCard.Size = new System.Drawing.Size(132, 27);
-            this.txtCustomerCard.TabIndex = 11;
+            this.txtCustomerCard.TabIndex = 0;
             this.txtCustomerCard.TextChanged += new System.EventHandler(this.txtCustomerCard_TextChanged_1);
             this.txtCustomerCard.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnly);
             // 

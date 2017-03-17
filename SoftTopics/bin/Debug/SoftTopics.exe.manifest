@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="SoftTopics.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="SoftTopics.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="SoftTopics" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -162,14 +162,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SoftTopics.exe" size="139776">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SoftTopics.exe" size="144384">
       <assemblyIdentity name="SoftTopics" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>VLqZ8n8LXJL7zL8/bbhgKtlqQR+8aUVK8Euyhau1ROc=</dsig:DigestValue>
+        <dsig:DigestValue>+8sOnjFp++LRZPNqBEBkpVMsrVRdf5yjxCvd30mLRDM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -182,13 +182,13 @@
       <dsig:DigestValue>V5MREucASczcvwHA/ogfDzt+01Kx0vmz+lWbsuU+QUE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SoftTopics.exe.config" size="538">
+  <file name="SoftTopics.exe.config" size="3169">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>qiqkxunNlTQVhUuINo2p8stXOj2eMcZm8ly2A1MG2sA=</dsig:DigestValue>
+      <dsig:DigestValue>Iu/kT5Iqz93Mn0Y4r1DMBjJIaxVXxIwQU+AEBrNeP+w=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
