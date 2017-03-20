@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
+using System.IO;
 
 namespace SoftTopics
 {
@@ -16,20 +18,42 @@ namespace SoftTopics
         private SqlConnection myConn;
         private SqlCommand myCmd;
         private SqlDataReader myReader;
-        public EmployeeManagement()
+        string Name;
+        bool ManagerEnabled;
+        public EmployeeManagement(string name, bool managerEnabled)
         {
             InitializeComponent();
+            lblName.Text = name;
+            this.Name = name;
+            this.ManagerEnabled = managerEnabled;
         }
 
         private void EmployeeManagement_Load(object sender, EventArgs e)
         {
             updateTable();
+            if (!ManagerEnabled)
+            {
+                lblName.ForeColor = Color.LimeGreen;
+                btnManagement.Enabled = true;
+                btnManagement.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnRent.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnReturn.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnReports.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnCustomerMan.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnMovieMan.FlatAppearance.BorderColor = Color.LimeGreen;
+            }
+            else
+            {
+                btnManagement.Enabled = false;
+                btnManagement.FlatAppearance.BorderColor = Color.Red;
+            }
         }
 
         private void updateTable()
         {
             lvEmployees.Items.Clear();
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=xxxxxxx; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; 
             myConn.Open();
             myCmd = new SqlCommand("SELECT FName, LName, IDNumber, Manager FROM UserTable", myConn);
             myReader = myCmd.ExecuteReader();
@@ -71,6 +95,14 @@ namespace SoftTopics
             }
         }
 
+        private void KeyPressedAlphaNum(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             ListViewItem selected = lvEmployees.SelectedItems[0];
@@ -91,7 +123,8 @@ namespace SoftTopics
 
         private void DeleteEmployee(string FName, string LName, int IDNumber)
         {
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=xxxxxxx; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; 
             myConn.Open();
             myCmd = new SqlCommand(@"DELETE FROM UserTable Where 
                 FName = @FName
@@ -107,18 +140,39 @@ namespace SoftTopics
 
         private void AddEmployee(string FName, string LName, int ID, string Manager, string Pass)
         {
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=xxxxxxx; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            Pass = pass(Pass);
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; 
             myConn.Open();
             myCmd = new SqlCommand(@"INSERT INTO UserTable (FName, LName, IDNumber, Manager, PassPhrase)
-                VALUES (@FName, @LName, @IDNumber, @Manager, @Pass)", myConn);
+                VALUES (@FName, @LName, @IDNumber, @Manager, @PassPhrase)", myConn);
             myCmd.Parameters.AddWithValue("@FName", FName);
             myCmd.Parameters.AddWithValue("@LName", LName);
-            myCmd.Parameters.AddWithValue("@IDNumber", IDNumber);
+            myCmd.Parameters.AddWithValue("@IDNumber", ID);
             myCmd.Parameters.AddWithValue("@Manager", Manager);
             myCmd.Parameters.AddWithValue("@PassPhrase", Pass);
             myCmd.ExecuteNonQuery();
             myConn.Close();
             updateTable();
+
+            if (Manager.Equals("N"))
+            {
+                using (StreamWriter sw = File.AppendText("..\\Files\\TempPassword.txt"))
+                {
+                    sw.WriteLine(ID);
+                }
+
+                MessageBox.Show("Employee will be asked to change password upon logon", "Temporary Password");
+            }
+
+        }
+
+        private string pass(string oldPass)
+        {
+            System.Security.Cryptography.MD5CryptoServiceProvider newPass = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(oldPass);
+            data = newPass.ComputeHash(data);
+            return System.Text.Encoding.ASCII.GetString(data);
         }
 
         private void txtBoxTextChanged(object sender, EventArgs e)
@@ -141,7 +195,8 @@ namespace SoftTopics
             string LName = txtLName.Text;
             string Pass = txtPassword.Text;
             string Manager = txtManager.Text;
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=xxxxxxx; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; 
             myConn.Open();
             myCmd = new SqlCommand("SELECT IDNumber, FName FROM UserTable WHERE IDNumber = @Uname AND FName = @FName", myConn);
             myCmd.Parameters.AddWithValue("@Uname", ID);
@@ -178,6 +233,51 @@ namespace SoftTopics
         private void btnUpdateList_Click(object sender, EventArgs e)
         {
             updateTable();
+        }
+
+        private void lblLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMovieMan_Click(object sender, EventArgs e)
+        {
+            MovieManagement mm = new MovieManagement(Name, ManagerEnabled);
+            mm.Show();
+            this.Close();
+        }
+
+        private void btnManagement_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCustomerMan_Click(object sender, EventArgs e)
+        {
+            CustomerManagement cm = new CustomerManagement(Name, ManagerEnabled);
+            cm.Show();
+            this.Close();
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            Reports reportsForm = new Reports(Name, ManagerEnabled);
+            reportsForm.Show();
+            this.Close();
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            Returns returnForm = new Returns(Name, ManagerEnabled);
+            returnForm.Show();
+            this.Close();
+        }
+
+        private void btnRent_Click(object sender, EventArgs e)
+        {
+            RentForm rent = new RentForm(Name, ManagerEnabled);
+            rent.Show();
+            this.Close();
         }
     }
 

@@ -13,13 +13,53 @@ namespace SoftTopics
 {
     public partial class Returns : Form
     {
-        public Returns()
+        string name;
+        bool ManagerEnabled;
+        public Returns(string name, bool managerEnabled)
         {
             InitializeComponent();
+            this.name = name;
+            lblName.Text = name;
+            this.ManagerEnabled = managerEnabled;
+        }
+
+        private void AlphaOnly(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void NumericOnly(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void Returns_Load(object sender, EventArgs e)
         {
+            if (!ManagerEnabled)
+            {
+                lblName.ForeColor = Color.LimeGreen;
+                btnManagement.Enabled = true;
+                btnManagement.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnRent.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnReturn.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnReports.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnCustomerMan.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnMovieMan.FlatAppearance.BorderColor = Color.LimeGreen;
+            }
+            else
+            {
+                btnManagement.Enabled = false;
+                btnManagement.FlatAppearance.BorderColor = Color.Red;
+            }
+
+
             using (StreamReader sr = new StreamReader("..\\Files\\CheckedOut.txt"))
             {
                 string line;
@@ -151,6 +191,53 @@ namespace SoftTopics
 
             File.Delete(realFile);
             File.Move(tempFile, realFile);
+        }
+
+        private void btnRent_Click(object sender, EventArgs e)
+        {
+            RentForm rent = new RentForm(name, ManagerEnabled);
+            rent.Show();
+            this.Close();
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            Returns returnForm = new Returns(name, ManagerEnabled);
+            returnForm.Show();
+            this.Close();
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            Reports reports = new Reports(name, ManagerEnabled);
+            reports.Show();
+            this.Close();
+        }
+
+        private void btnCustomerMan_Click(object sender, EventArgs e)
+        {
+            CustomerManagement cm = new CustomerManagement(name, ManagerEnabled);
+            cm.Show();
+            this.Close();
+        }
+
+        private void btnManagement_Click(object sender, EventArgs e)
+        {
+            EmployeeManagement em = new EmployeeManagement(name, ManagerEnabled);
+            em.Show();
+            this.Close();
+        }
+
+        private void lblLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMovieMan_Click(object sender, EventArgs e)
+        {
+            MovieManagement mm = new MovieManagement(name, ManagerEnabled);
+            mm.Show();
+            this.Close();
         }
 
         

@@ -14,3 +14,35 @@ c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\o
 c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\obj\Debug\SoftTopics.Returns.resources
 c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\obj\Debug\SoftTopics.MovieManagement.resources
 c:\users\bcrum_000\documents\visual studio 2013\Projects\SoftTopics\SoftTopics\obj\Debug\SoftTopics.Reports.resources
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\SoftTopics.exe.config
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.exe
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.pdb
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\SoftTopics.exe
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\SoftTopics.pdb
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.csprojResolveAssemblyReference.cache
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.CustomerManagement.resources
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.EmployeeManagement.resources
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.formLogin.resources
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.HomeScreen.resources
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.MovieManagement.resources
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.Properties.Resources.resources
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.RentForm.resources
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.Reports.resources
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.Returns.resources
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.csproj.GenerateResource.Cache
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\MigraDoc.DocumentObjectModel.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\MigraDoc.Rendering.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\MigraDoc.RtfRendering.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\PdfSharp.Charting.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\PdfSharp.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\de\MigraDoc.DocumentObjectModel.resources.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\de\MigraDoc.Rendering.resources.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\de\MigraDoc.RtfRendering.resources.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\de\PdfSharp.resources.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\Google.Authenticator.dll
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics._2ndFactorSetup.resources
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\SoftTopics.exe.manifest
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\bin\Debug\SoftTopics.application
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.TrustInfo.xml
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.exe.manifest
+C:\Users\bcrum_000\Documents\GitHub2\C_Sharp_app\SoftTopics\obj\Debug\SoftTopics.application

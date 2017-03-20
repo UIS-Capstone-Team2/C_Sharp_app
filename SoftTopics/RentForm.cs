@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using System.Configuration;
 
 namespace SoftTopics
 {
+    
     public partial class RentForm : Form
     {
+        bool ManagerEnabled;
         private SqlConnection myConn;
         private SqlCommand myCmd;
         private SqlDataReader myReader;
@@ -21,9 +24,30 @@ namespace SoftTopics
         private string CustomerLastName;
         private string CustomerPhone;
         int totalPrice;
-        public RentForm()
+        string name;
+        public RentForm(string name, bool managerEnabled)
         {
             InitializeComponent();
+            this.name = name;
+            lblName.Text = name;
+            this.ManagerEnabled = managerEnabled;
+        }
+
+        private void AlphaOnly(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void NumericOnly(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void btnFind_Click(object sender, EventArgs e)
@@ -40,16 +64,21 @@ namespace SoftTopics
 
         private void findCust(string FName, string LName, string PNumber)
         {
-            myConn = new SqlConnection("Server=softwarecapproject.database.windows.net;Database=VideoStoreUsers;User ID = bcrumrin64; Password=XXXXX; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
+            string customerCard = txtCustomerCard.Text;
+
+            myConn = new SqlConnection();
+            myConn.ConnectionString = ConfigurationManager.ConnectionStrings["DataServer"].ConnectionString; 
             myConn.Open();
-            myCmd = new SqlCommand(@"SELECT FName, LName, PhoneNumber FROM Customers WHERE 
+            myCmd = new SqlCommand(@"SELECT FName, LName, PhoneNumber, CustomerCard FROM Customers WHERE 
             (FName = @Fname AND LName = @Lname)
             OR (FName = @Fname AND PhoneNumber = @PNumber)
-            OR (LName = @Lname AND PhoneNumber = @PNumber)", myConn);
+            OR (LName = @Lname AND PhoneNumber = @PNumber)
+            OR (CustomerCard = @CustomerCard)", myConn);
             myCmd.Parameters.AddWithValue("@Fname", FName);
             myCmd.Parameters.AddWithValue("@Lname", LName);
             myCmd.Parameters.AddWithValue("@PNumber", PNumber);
-            
+            myCmd.Parameters.AddWithValue("@CustomerCard", customerCard);
+
 
 
             myReader = myCmd.ExecuteReader();
@@ -65,13 +94,13 @@ namespace SoftTopics
 
                 lvSearchResults.View = View.Details;
                 lvSearchResults.FullRowSelect = true;
-                string[] result = {FirstName, LastName, PhoneNumber};
+                string[] result = { FirstName, LastName, PhoneNumber };
                 lvSearchResults.Items.Add(new ListViewItem(result));
-                
+
 
             }
-            
- 
+
+
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -82,7 +111,7 @@ namespace SoftTopics
             CustomerPhone = selected.SubItems[2].Text;
             string customerFull = CustomerName + CustomerLastName;
             customerFull = customerFull.Replace(" ", "");
-            lblCustomerName.Text = CustomerName + CustomerLastName;
+            lblCustomerName.Text = customerFull;
             lblCustomerNumber.Text = CustomerPhone;
 
             string fileName = "..\\files\\" + CustomerName + CustomerLastName + CustomerPhone + ".txt";
@@ -90,7 +119,7 @@ namespace SoftTopics
             if (File.Exists(fileName))
             {
                 checkOverdue(fileName);
-                checkLate(CustomerName,CustomerLastName,CustomerPhone);
+                checkLate(CustomerName, CustomerLastName, CustomerPhone);
             }
             else
             {
@@ -115,7 +144,7 @@ namespace SoftTopics
             using (StreamReader sr = new StreamReader(lateFile))
             {
                 string line;
-                while ((line = sr.ReadLine())!=null)
+                while ((line = sr.ReadLine()) != null)
                 {
                     string[] lineInfo = line.Split(',');
                     string FName = lineInfo[1];
@@ -179,7 +208,7 @@ namespace SoftTopics
         {
             string line;
             Boolean update = false;
-            
+
             StreamReader filePath = new StreamReader(file);
             int overdueDays = 0;
             int overdueMovies = 0;
@@ -214,17 +243,21 @@ namespace SoftTopics
                 System.DateTime checkedOut = new System.DateTime(dateYear, dateMonth, dateDay);
 
                 System.TimeSpan late = today.Subtract(checkedOut);
+
                 int lateDays = late.Days;
-                overdueDays+=lateDays;
-                overdueMovies++;
-  
+                if (lateDays > 0)
+                {
+                    overdueDays += lateDays;
+                    overdueMovies++;
+                }
+
             }
             filePath.Close();
 
             if (update)
             {
                 File.Delete(file);
-                File.Move("..\\Files\\temp.txt",file);
+                File.Move("..\\Files\\temp.txt", file);
                 update = false;
             }
             if (overdueMovies > 0)
@@ -250,8 +283,8 @@ namespace SoftTopics
 
             filePath.Close();
             tempFile.Close();
-           
-            
+
+
         }
 
         private Boolean checkReturn(string upc)
@@ -307,6 +340,12 @@ namespace SoftTopics
 
         private void btnAddMovie_Click(object sender, EventArgs e)
         {
+            if (alreadyCheckedOut(txtDVDID.Text))
+            {
+                MessageBox.Show("This movie has already been rented, please return before re-renting the movie");
+                lblMovieTitle.Text = "";
+                txtRentalDays.Value = 0;
+            }
             if (txtRentalDays.Value > 0 && lblMovieTitle.Text != "")
             {
                 lvOverview.View = View.Details;
@@ -316,10 +355,30 @@ namespace SoftTopics
                 totalPrice += (int)(txtRentalDays.Value) * 3;
                 lblTotalPrice.Text = totalPrice.ToString();
                 lblMovieTitle.Text = "";
+                txtRentalDays.Value = 0;
                 txtRentalDays.ResetText();
                 txtDVDID.ResetText();
             }
-            
+
+        }
+
+        private Boolean alreadyCheckedOut(string upc)
+        {
+            string checkedOutFile = "..\\Files\\CheckedOut.txt";
+            using (StreamReader sr = new StreamReader(checkedOutFile))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] lineInfo = line.Split(',');
+                    string barcode = lineInfo[1];
+                    if (barcode.Equals(upc))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         private void submitMovies(string filePath)
@@ -363,7 +422,7 @@ namespace SoftTopics
             totalPrice = 0;
             lblTotalPrice.Text = "0.00";
 
-            
+
         }
 
         private void btnRemoveMovie_Click(object sender, EventArgs e)
@@ -381,9 +440,9 @@ namespace SoftTopics
                 lblTotalPrice.Text = totalPrice.ToString();
                 lvOverview.SelectedItems[0].Remove();
             }
-            
 
-            
+
+
         }
 
         private void btnSubmitPayment_Click(object sender, EventArgs e)
@@ -400,6 +459,84 @@ namespace SoftTopics
             }
         }
 
-        
+        private void txtCustomerCard_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCustomerCard.Text.Length == 13)
+            {
+                findCust("Null", "Null", "Null");
+            }
+        }
+
+        private void lblRentalRate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnRent_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            Returns returnForm = new Returns(name, ManagerEnabled);
+            returnForm.Show();
+            this.Close();
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            Reports reports = new Reports(name, ManagerEnabled);
+            reports.Show();
+            this.Close();
+        }
+
+        private void btnCustomerMan_Click(object sender, EventArgs e)
+        {
+            CustomerManagement cm = new CustomerManagement(name, ManagerEnabled);
+            cm.Show();
+            this.Close();
+        }
+
+        private void btnManagement_Click(object sender, EventArgs e)
+        {
+            EmployeeManagement em = new EmployeeManagement(name, ManagerEnabled);
+            em.Show();
+            this.Close();
+        }
+
+        private void btnMovieMan_Click(object sender, EventArgs e)
+        {
+            MovieManagement mm = new MovieManagement(name, ManagerEnabled);
+            mm.Show();
+            this.Close();
+        }
+
+        private void RentForm_Load(object sender, EventArgs e)
+        {
+            if (!ManagerEnabled)
+            {
+                lblName.ForeColor = Color.LimeGreen;
+                btnManagement.Enabled = true;
+                btnManagement.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnRent.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnReturn.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnReports.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnCustomerMan.FlatAppearance.BorderColor = Color.LimeGreen;
+                btnMovieMan.FlatAppearance.BorderColor = Color.LimeGreen;
+            }
+            else
+            {
+                btnManagement.Enabled = false;
+                btnManagement.FlatAppearance.BorderColor = Color.Red;
+            }
+        }
+
+
     }
 }

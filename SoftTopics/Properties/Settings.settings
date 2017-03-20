@@ -1,7 +1,36 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SoftTopics.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="temporaryFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\\Files\\Temp.txt</Value>
+    </Setting>
+    <Setting Name="twoFactorSetupPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\\Files\\TwoFactorSetup.txt</Value>
+    </Setting>
+    <Setting Name="movieListPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\\Files\\MovieList.txt</Value>
+    </Setting>
+    <Setting Name="overDuePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\\Files\\OverDue.txt</Value>
+    </Setting>
+    <Setting Name="rentalReportPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\\Files\\RentalReport.txt</Value>
+    </Setting>
+    <Setting Name="tempPasswordPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\\Files\\TempPassword.txt</Value>
+    </Setting>
+    <Setting Name="lateReturnsPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\\Files\\LateReturns.txt</Value>
+    </Setting>
+    <Setting Name="checkedOutPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\\Files\\CheckedOut.txt</Value>
+    </Setting>
+    <Setting Name="loginReportPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\\Files\\LoginReport.txt</Value>
+    </Setting>
+    <Setting Name="quickLoginPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\\Files\\QuickLogin.txt</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
