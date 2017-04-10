@@ -64,6 +64,8 @@ namespace SoftTopics
                 lblPin.Visible = true;
                 btnLogin.Visible = false;
                 txtUsername.Visible = false;
+                txtPassword.Visible = false;
+                
 
                 
                 string twoFactFile;
@@ -233,6 +235,7 @@ namespace SoftTopics
             txtPIN.Visible = false;
             btnLogin.Visible = true;
             txtUsername.Visible = true;
+            txtPassword.Visible = true;
             txtPassword.Text = "";
             txtUsername.Text = "";
             txtPIN.Text = "";
@@ -256,6 +259,13 @@ namespace SoftTopics
             {
                 btnSubmit.Enabled = false;
                 txtPIN.Enabled = false;
+                btnSubmit.Visible = false;
+                txtPIN.Visible = false;
+                btnLogin.Visible = true;
+                txtPassword.Visible = true;
+                txtUsername.Visible = true;
+                txtUsername.Text = "";
+                txtPassword.Text = "";
                 lblSuccess.Text = "Invalid PIN";
                 txtPIN.Text = "";
             }
