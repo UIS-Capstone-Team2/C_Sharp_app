@@ -125,6 +125,7 @@
             this.txtDVDID.Location = new System.Drawing.Point(1087, 294);
             this.txtDVDID.MaxLength = 12;
             this.txtDVDID.Name = "txtDVDID";
+            this.txtDVDID.ShortcutsEnabled = false;
             this.txtDVDID.Size = new System.Drawing.Size(142, 27);
             this.txtDVDID.TabIndex = 5;
             this.txtDVDID.TextChanged += new System.EventHandler(this.txtDVDID_TextChanged);
@@ -281,6 +282,7 @@
             this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstName.Location = new System.Drawing.Point(177, 431);
             this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.ShortcutsEnabled = false;
             this.txtFirstName.Size = new System.Drawing.Size(159, 27);
             this.txtFirstName.TabIndex = 1;
             this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
@@ -291,6 +293,7 @@
             this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastName.Location = new System.Drawing.Point(177, 476);
             this.txtLastName.Name = "txtLastName";
+            this.txtLastName.ShortcutsEnabled = false;
             this.txtLastName.Size = new System.Drawing.Size(159, 27);
             this.txtLastName.TabIndex = 2;
             this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AlphaOnly);
@@ -322,6 +325,7 @@
             this.txtPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhoneNumber.Location = new System.Drawing.Point(177, 520);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
+            this.txtPhoneNumber.ShortcutsEnabled = false;
             this.txtPhoneNumber.Size = new System.Drawing.Size(159, 27);
             this.txtPhoneNumber.TabIndex = 3;
             this.txtPhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnly);
@@ -448,6 +452,7 @@
             this.txtCustomerCard.Location = new System.Drawing.Point(172, 353);
             this.txtCustomerCard.MaxLength = 15;
             this.txtCustomerCard.Name = "txtCustomerCard";
+            this.txtCustomerCard.ShortcutsEnabled = false;
             this.txtCustomerCard.Size = new System.Drawing.Size(164, 27);
             this.txtCustomerCard.TabIndex = 0;
             this.txtCustomerCard.TextChanged += new System.EventHandler(this.txtCustomerCard_TextChanged);

@@ -78,6 +78,7 @@
             this.txtBarcode.Location = new System.Drawing.Point(942, 401);
             this.txtBarcode.MaxLength = 10;
             this.txtBarcode.Name = "txtBarcode";
+            this.txtBarcode.ShortcutsEnabled = false;
             this.txtBarcode.Size = new System.Drawing.Size(148, 27);
             this.txtBarcode.TabIndex = 0;
             this.txtBarcode.TextChanged += new System.EventHandler(this.txtBarcode_TextChanged);
@@ -89,6 +90,7 @@
             this.txtTitle.Location = new System.Drawing.Point(942, 444);
             this.txtTitle.MaxLength = 32;
             this.txtTitle.Name = "txtTitle";
+            this.txtTitle.ShortcutsEnabled = false;
             this.txtTitle.Size = new System.Drawing.Size(148, 27);
             this.txtTitle.TabIndex = 1;
             // 

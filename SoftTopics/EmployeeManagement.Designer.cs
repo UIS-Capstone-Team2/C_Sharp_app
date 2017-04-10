@@ -98,6 +98,7 @@
             this.txtFName.Location = new System.Drawing.Point(904, 318);
             this.txtFName.MaxLength = 16;
             this.txtFName.Name = "txtFName";
+            this.txtFName.ShortcutsEnabled = false;
             this.txtFName.Size = new System.Drawing.Size(150, 27);
             this.txtFName.TabIndex = 0;
             this.txtFName.TextChanged += new System.EventHandler(this.txtBoxTextChanged);
@@ -109,6 +110,7 @@
             this.txtLName.Location = new System.Drawing.Point(904, 359);
             this.txtLName.MaxLength = 32;
             this.txtLName.Name = "txtLName";
+            this.txtLName.ShortcutsEnabled = false;
             this.txtLName.Size = new System.Drawing.Size(150, 27);
             this.txtLName.TabIndex = 1;
             this.txtLName.TextChanged += new System.EventHandler(this.txtBoxTextChanged);
@@ -120,6 +122,7 @@
             this.txtIDNum.Location = new System.Drawing.Point(904, 400);
             this.txtIDNum.MaxLength = 12;
             this.txtIDNum.Name = "txtIDNum";
+            this.txtIDNum.ShortcutsEnabled = false;
             this.txtIDNum.Size = new System.Drawing.Size(150, 27);
             this.txtIDNum.TabIndex = 2;
             this.txtIDNum.TextChanged += new System.EventHandler(this.txtBoxTextChanged);
@@ -131,6 +134,7 @@
             this.txtManager.Location = new System.Drawing.Point(904, 447);
             this.txtManager.MaxLength = 1;
             this.txtManager.Name = "txtManager";
+            this.txtManager.ShortcutsEnabled = false;
             this.txtManager.Size = new System.Drawing.Size(150, 27);
             this.txtManager.TabIndex = 3;
             this.txtManager.TextChanged += new System.EventHandler(this.txtBoxTextChanged);
@@ -142,6 +146,7 @@
             this.txtPassword.Location = new System.Drawing.Point(904, 492);
             this.txtPassword.MaxLength = 16;
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.ShortcutsEnabled = false;
             this.txtPassword.Size = new System.Drawing.Size(150, 27);
             this.txtPassword.TabIndex = 4;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtBoxTextChanged);

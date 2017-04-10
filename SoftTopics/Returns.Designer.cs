@@ -156,6 +156,7 @@
             this.txtBarcode.Location = new System.Drawing.Point(616, 407);
             this.txtBarcode.MaxLength = 12;
             this.txtBarcode.Name = "txtBarcode";
+            this.txtBarcode.ShortcutsEnabled = false;
             this.txtBarcode.Size = new System.Drawing.Size(189, 27);
             this.txtBarcode.TabIndex = 0;
             this.txtBarcode.TextChanged += new System.EventHandler(this.textBox1_TextChanged);

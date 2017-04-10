@@ -59,6 +59,7 @@
             this.txtUsername.Location = new System.Drawing.Point(552, 353);
             this.txtUsername.MaxLength = 13;
             this.txtUsername.Name = "txtUsername";
+            this.txtUsername.ShortcutsEnabled = false;
             this.txtUsername.Size = new System.Drawing.Size(100, 20);
             this.txtUsername.TabIndex = 1;
             this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
@@ -69,6 +70,7 @@
             this.txtPassword.Location = new System.Drawing.Point(552, 415);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
+            this.txtPassword.ShortcutsEnabled = false;
             this.txtPassword.Size = new System.Drawing.Size(100, 20);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterKeyPress);
@@ -108,6 +110,7 @@
             this.txtPIN.Location = new System.Drawing.Point(552, 495);
             this.txtPIN.MaxLength = 11;
             this.txtPIN.Name = "txtPIN";
+            this.txtPIN.ShortcutsEnabled = false;
             this.txtPIN.Size = new System.Drawing.Size(100, 20);
             this.txtPIN.TabIndex = 4;
             this.txtPIN.Visible = false;
