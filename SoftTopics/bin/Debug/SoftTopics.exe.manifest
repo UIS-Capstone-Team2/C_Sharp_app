@@ -162,14 +162,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SoftTopics.exe" size="145872">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SoftTopics.exe" size="147408">
       <assemblyIdentity name="SoftTopics" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>GeJ4iMh1LOB1rhB1WnPCKy+A5jtiVdM6TXVX3hXO+Hw=</dsig:DigestValue>
+        <dsig:DigestValue>AC/1zJTOPzcU43m3taMEl8wrEFeU7wgpt1GUbp379To=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

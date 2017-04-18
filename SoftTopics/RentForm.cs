@@ -52,6 +52,7 @@ namespace SoftTopics
 
         private void btnFind_Click(object sender, EventArgs e)
         {
+            lvSearchResults.Items.Clear();
             string FirstName = txtFirstName.Text;
             string LastName = txtLastName.Text;
             string PhoneNumber = txtPhoneNumber.Text;
@@ -100,7 +101,7 @@ namespace SoftTopics
 
             }
 
-
+            
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -537,6 +538,9 @@ namespace SoftTopics
             }
         }
 
+        private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
