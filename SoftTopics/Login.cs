@@ -20,6 +20,7 @@ namespace SoftTopics
   
     public partial class formLogin : Form
     {
+        
         private HomeScreen HSForm;
         private SqlConnection myConn;
         private SqlCommand myCmd;
@@ -339,6 +340,21 @@ namespace SoftTopics
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            this.AcceptButton = btnLogin;
+        }
+
+        private void lblPin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPIN_TextChanged(object sender, EventArgs e)
+        {
+            this.AcceptButton = btnSubmit;   
         }
     }
 }

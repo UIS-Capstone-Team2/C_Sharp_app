@@ -99,7 +99,7 @@ namespace SoftTopics
 
             foreach (ListViewItem item in lvMovies.Items)
             {
-                if (item.SubItems[1].Text.Equals(txtBarcode.Text))
+                if (item.SubItems[1].Text.Equals(txtBarcode.Text + "01"))
                 {
                     txtBarcode.Text = "";
                     MessageBox.Show("There is already a movie with that barcode", "error");
